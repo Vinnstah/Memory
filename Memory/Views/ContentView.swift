@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var columns: [GridItem] = [GridItem(), GridItem(),GridItem(),GridItem()]
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+        LazyVGrid(columns: columns) {
+        ForEach(1...14, id: \.self) { card in
+            CardView()
+        }
+        }}
 }
 
 struct ContentView_Previews: PreviewProvider {
