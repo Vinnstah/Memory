@@ -13,11 +13,11 @@ struct CardView: View {
     
     var body: some View {
         ZStack{
-        Rectangle()
-            .frame(width: UIScreen.screenWidth / 4 - 10,
-                   height: UIScreen.screenHeight / 5)
-            .cornerRadius(20)
-        Text(name).foregroundColor(.white)
+            Rectangle()
+                .frame(width: UIScreen.screenWidth / 4 - 10,
+                       height: UIScreen.screenHeight / 5)
+                .cornerRadius(20)
+            Text(name).foregroundColor(.white)
         }
     }
 }

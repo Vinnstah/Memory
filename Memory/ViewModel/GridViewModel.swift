@@ -12,7 +12,7 @@ final class GridViewModel: ObservableObject {
     typealias LayoutOrder = Card.Symbol
     
     var columns: [GridItem]
-    @Published var testLayout: [LayoutOrder]
+    var testLayout: [LayoutOrder]
     
     
     init(columns: [GridItem],
