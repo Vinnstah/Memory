@@ -16,26 +16,30 @@ extension CardsViewModel {
         return card1 == card2
     }
     
-
-    func flipAllCards(_ card: [CardViewModel]) -> [CardViewModel]{
-        for i in card {
-            i.isFlipped = false
+    
+    func flipAllCards(_ cards: [CardViewModel]) -> [CardViewModel]{
+        for card in cards {
+            if card.isMatched == false {
+                card.isFlipped = false
+            } else {
+                continue
+            }
         }
-        return card
+        return cards
     }
     
     func flipCard(_ card: CardViewModel){
-    
+        
         if numberOfCardsFlipped < 2 {
             card.isFlipped.toggle()
             numberOfCardsFlipped += 1
-
+            
         } else {
+            //            checkIfTwoCardsAreEqual(, <#T##card2: Card##Card#>)
             flipAllCards(cardViewModels)
             card.isFlipped.toggle()
             numberOfCardsFlipped = 0
-            
-            
-            }
+        }
     }
+    
 }

@@ -11,15 +11,17 @@ final class CardViewModel: Identifiable, Hashable, ObservableObject {
 
     let card: Card
     @Published var isFlipped: Bool
+    @Published var isMatched: Bool
 
     
     init(
         card: Card,
-        isFlipped: Bool = false
+        isFlipped: Bool = false,
+        isMatched: Bool = false
     ){
         self.card = card
         self.isFlipped = isFlipped
-       
+        self.isMatched = isFlipped
     }
 }
 

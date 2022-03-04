@@ -18,7 +18,6 @@ struct CardView: View {
                 .frame(width: UIScreen.screenWidth / 4 - 10,
                        height: UIScreen.screenHeight / 5)
                 .cornerRadius(20)
-//            viewModel.isFlipped ?
             Text(viewModel.card.symbol.display
             ).foregroundColor(.white)
                 .opacity(viewModel.isFlipped ? 100 : 0)
