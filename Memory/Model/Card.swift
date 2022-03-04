@@ -8,17 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct Card {
+struct Card: Equatable {
     
-    let id: UUID
-    let name: String
+    let symbol: Symbol
     
-
 }
 
 extension Card {
     
-    enum Symbol: String {
+    enum Symbol: String, Equatable, CaseIterable {
         
         var display: String {
             rawValue
@@ -28,4 +26,3 @@ extension Card {
         
     }
 }
-

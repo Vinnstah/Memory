@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct CardView: View {
-    let name: Card.Symbol.RawValue
+//    let name: Card.Symbol.RawValue
+    @ObservedObject var viewModel: CardViewModel
     
     var body: some View {
         ZStack{
@@ -17,7 +18,10 @@ struct CardView: View {
                 .frame(width: UIScreen.screenWidth / 4 - 10,
                        height: UIScreen.screenHeight / 5)
                 .cornerRadius(20)
-            Text(name).foregroundColor(.white)
+//            viewModel.isFlipped ?
+            Text(viewModel.card.symbol.display
+            ).foregroundColor(.white)
+                .opacity(viewModel.isFlipped ? 100 : 0)
         }
     }
 }
