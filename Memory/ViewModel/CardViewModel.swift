@@ -9,32 +9,27 @@ import Foundation
 
 final class CardViewModel: Identifiable, Hashable, ObservableObject {
 
-    let id: UUID = .init()
-    @Published var name: DisplayName
-    @Published var isPressed: Bool
-//    @Published var item: Card.Symbol
-//    @Published var defaultLayoutOrder: [Card.Symbol] =
-//    [
-//        .one, .two, .three, .four,
-//        .five, .six, .seven, .eight,
-//        .nine, .ten, .eleven, .twelve,
-//        .thirteen, .fourteen, .fifteen, .sixteen
-//    ]
+    let card: Card
+    @Published var isFlipped: Bool
+
     
     init(
-        name: DisplayName,
-        isPressed: Bool = false
+        card: Card,
+        isFlipped: Bool = false
     ){
-        self.name = name
-        self.isPressed = isPressed
-
+        self.card = card
+        self.isFlipped = isFlipped
+       
     }
 }
 
 extension CardViewModel {
     
     static func == (lhs: CardViewModel, rhs: CardViewModel) -> Bool {
-        assert(lhs.id == rhs.id)
+        guard lhs.id == rhs.id else {
+            return false
+        }
+        assert(lhs.card == rhs.card)
         return true
     }
     
@@ -42,12 +37,3 @@ extension CardViewModel {
         hasher.combine(id)
     }
 }
-
-extension CardViewModel {
-    
-    typealias DisplayName = Card.Symbol
-}
-
-
-
-
