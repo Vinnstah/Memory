@@ -9,18 +9,23 @@ import Foundation
 import SwiftUI
 
 final class CardsViewModel: ObservableObject {
-    typealias LayoutOrder = Card.Symbol
     
     @Published var cardViewModels: [CardViewModel]
+    @Published var numberOfCardsFlipped: Int
     var columns: [GridItem]
     
     init(columns: [GridItem],
-         cardViewModels: [CardViewModel] =
+         numberOfCardsFlipped: Int = 0,
+         
+         cardViewModels: [CardViewModel]
+         =
          Card.Symbol.allCases.map {
-        CardViewModel(card: Card(symbol: $0))}
+        CardViewModel(card: Card(symbol: $0))}.shuffled()
     ) {
         self.columns = columns
         self.cardViewModels = cardViewModels
+        self.numberOfCardsFlipped = numberOfCardsFlipped
+
     }
     
 }
@@ -37,7 +42,7 @@ extension CardsViewModel {
                 repeating: .init(.flexible()),
                 count: columnCount
             )
-            , cardViewModels: .init()
+//            , cardViewModels: .init()
             
         )
     }

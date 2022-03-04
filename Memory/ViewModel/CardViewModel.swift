@@ -11,6 +11,7 @@ final class CardViewModel: Identifiable, Hashable, ObservableObject {
 
     let card: Card
     @Published var isFlipped: Bool
+
     
     init(
         card: Card,
@@ -18,14 +19,17 @@ final class CardViewModel: Identifiable, Hashable, ObservableObject {
     ){
         self.card = card
         self.isFlipped = isFlipped
-
+       
     }
 }
 
 extension CardViewModel {
     
     static func == (lhs: CardViewModel, rhs: CardViewModel) -> Bool {
-        assert(lhs.id == rhs.id)
+        guard lhs.id == rhs.id else {
+            return false
+        }
+        assert(lhs.card == rhs.card)
         return true
     }
     
@@ -33,12 +37,3 @@ extension CardViewModel {
         hasher.combine(id)
     }
 }
-
-extension CardViewModel {
-    
-    typealias DisplayName = Card.Symbol
-}
-
-
-
-

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct GridView: View {
     @ObservedObject var viewModel: CardsViewModel
-
 }
 
 extension GridView {
@@ -18,7 +17,9 @@ extension GridView {
         LazyVGrid(columns: viewModel.columns, spacing: 10) {
             ForEach($viewModel.cardViewModels, id: \.self) { $card in
                 Button(
-                    action: {} ,
+                    action: {
+                        viewModel.flipCard(card)
+                    } ,
                     label: {
                         CardView(viewModel: card)
                         
