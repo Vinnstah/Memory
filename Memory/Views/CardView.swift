@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CardView: View {
-    let name: String
+    let name: Card.Symbol.RawValue
     
     var body: some View {
         ZStack{
