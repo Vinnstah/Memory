@@ -12,19 +12,12 @@ final class CardsViewModel: ObservableObject {
     typealias LayoutOrder = Card.Symbol
     
     @Published var cardViewModels: [CardViewModel]
-    
     var columns: [GridItem]
-    var defaultLayoutOrder: [LayoutOrder] =
-    [
-        .one, .two, .three, .four,
-        .five, .six, .seven, .eight,
-        .nine, .ten, .eleven, .twelve,
-        .thirteen, .fourteen, .fifteen, .sixteen
-    ]
-    
     
     init(columns: [GridItem],
-         cardViewModels: [CardViewModel]
+         cardViewModels: [CardViewModel] =
+         Card.Symbol.allCases.map {
+        CardViewModel(card: Card(symbol: $0))}
     ) {
         self.columns = columns
         self.cardViewModels = cardViewModels
@@ -36,7 +29,6 @@ final class CardsViewModel: ObservableObject {
 extension CardsViewModel {
     
     convenience init(
-        layoutOrder: [LayoutOrder] = .init(),
         columnCount: Int = 4
     ) {
         self.init(
@@ -44,7 +36,8 @@ extension CardsViewModel {
             columns: .init(
                 repeating: .init(.flexible()),
                 count: columnCount
-            ), cardViewModels: .init()
+            )
+            , cardViewModels: .init()
             
         )
     }

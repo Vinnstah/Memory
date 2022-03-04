@@ -10,15 +10,13 @@ import SwiftUI
 
 struct Card {
     
-    let id: UUID
-    let name: String
+    let symbol: Symbol
     
-
 }
 
 extension Card {
     
-    enum Symbol: String {
+    enum Symbol: String, CaseIterable {
         
         var display: String {
             rawValue

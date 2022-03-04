@@ -9,24 +9,15 @@ import Foundation
 
 final class CardViewModel: Identifiable, Hashable, ObservableObject {
 
-    let id: UUID = .init()
-    @Published var name: DisplayName
-    @Published var isPressed: Bool
-//    @Published var item: Card.Symbol
-//    @Published var defaultLayoutOrder: [Card.Symbol] =
-//    [
-//        .one, .two, .three, .four,
-//        .five, .six, .seven, .eight,
-//        .nine, .ten, .eleven, .twelve,
-//        .thirteen, .fourteen, .fifteen, .sixteen
-//    ]
+    let card: Card
+    @Published var isFlipped: Bool
     
     init(
-        name: DisplayName,
-        isPressed: Bool = false
+        card: Card,
+        isFlipped: Bool = false
     ){
-        self.name = name
-        self.isPressed = isPressed
+        self.card = card
+        self.isFlipped = isFlipped
 
     }
 }
