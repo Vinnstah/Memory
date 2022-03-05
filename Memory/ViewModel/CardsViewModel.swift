@@ -13,11 +13,8 @@ final class CardsViewModel: ObservableObject {
     @Published var cardViewModels: [CardViewModel]
     @Published var numberOfCardsFlipped: Int
     var columns: [GridItem]
-    @Published var firstCard: CardViewModel?
-    @Published var secondCard: CardViewModel?
-    //Comment out this section to compile
-//    var firstCard: CardViewModel
-//    var secondCard: CardViewModel
+    @Published var idOfFlippedCard: CardViewModel.ID?
+
     
     init(columns: [GridItem],
          numberOfCardsFlipped: Int = 0,
@@ -25,16 +22,14 @@ final class CardsViewModel: ObservableObject {
         CardViewModel(card: Card(symbol: $0))}.shuffled()
          
          //Comment out this section to compile
-         ,firstCard: CardViewModel? = nil,
-         secondCard: CardViewModel? = nil
+         ,idOfFlippedCard: CardViewModel.ID? = nil
     ) {
         self.columns = columns
         self.cardViewModels = cardViewModels
         self.numberOfCardsFlipped = numberOfCardsFlipped
         
         //Comment out this section to compile
-        self.firstCard = firstCard
-        self.secondCard = secondCard
+        self.idOfFlippedCard = idOfFlippedCard
     }
     
 }
