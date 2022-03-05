@@ -13,7 +13,8 @@ final class CardsViewModel: ObservableObject {
     @Published var cardViewModels: [CardViewModel]
     @Published var numberOfCardsFlipped: Int
     var columns: [GridItem]
-    
+    @Published var firstCard: CardViewModel?
+    @Published var secondCard: CardViewModel?
     //Comment out this section to compile
 //    var firstCard: CardViewModel
 //    var secondCard: CardViewModel
@@ -21,19 +22,19 @@ final class CardsViewModel: ObservableObject {
     init(columns: [GridItem],
          numberOfCardsFlipped: Int = 0,
          cardViewModels: [CardViewModel] = Card.Symbol.allCases.duplicate().map {
-        CardViewModel(card: Card(symbol: $0))}
+        CardViewModel(card: Card(symbol: $0))}.shuffled()
          
          //Comment out this section to compile
-//         ,firstCard: CardViewModel,
-//         secondCard: CardViewModel
+         ,firstCard: CardViewModel? = nil,
+         secondCard: CardViewModel? = nil
     ) {
         self.columns = columns
         self.cardViewModels = cardViewModels
         self.numberOfCardsFlipped = numberOfCardsFlipped
         
         //Comment out this section to compile
-//        self.firstCard = firstCard
-//        self.secondCard = secondCard
+        self.firstCard = firstCard
+        self.secondCard = secondCard
     }
     
 }
