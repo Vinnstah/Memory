@@ -28,17 +28,27 @@ extension CardsViewModel {
         return cards
     }
     
+    func alreadyFlipped(_ card: CardViewModel) -> Bool {
+        card.isFlipped ? true : false
+    }
+    
     func flipCard(_ card: CardViewModel){
+        guard alreadyFlipped(card) == false else {
+            return
+        }
         
         if numberOfCardsFlipped < 2 {
-            card.isFlipped.toggle()
             numberOfCardsFlipped += 1
+            card.isFlipped.toggle()
+            
             
         } else {
-            //            checkIfTwoCardsAreEqual(, <#T##card2: Card##Card#>)
+            // TODO: Implement check if two cards are equal here? Using function from above.
             flipAllCards(cardViewModels)
+            numberOfCardsFlipped = 1
+            
             card.isFlipped.toggle()
-            numberOfCardsFlipped = 0
+            
         }
     }
     

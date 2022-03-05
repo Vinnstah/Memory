@@ -14,20 +14,24 @@ final class CardsViewModel: ObservableObject {
     @Published var numberOfCardsFlipped: Int
     var columns: [GridItem]
     
-    //Need to implement these as optional
-//    var firstCard: Card
-//    var secondCard: Card
+    //Comment out this section to compile
+//    var firstCard: CardViewModel
+//    var secondCard: CardViewModel
     
     init(columns: [GridItem],
          numberOfCardsFlipped: Int = 0,
-         cardViewModels: [CardViewModel] = Card.Symbol.allCases.map {
-        CardViewModel(card: Card(symbol: $0))}.shuffled()
-//         ,firstCard: Card,
-//         secondCard: Card
+         cardViewModels: [CardViewModel] = Card.Symbol.allCases.duplicate().map {
+        CardViewModel(card: Card(symbol: $0))}
+         
+         //Comment out this section to compile
+//         ,firstCard: CardViewModel,
+//         secondCard: CardViewModel
     ) {
         self.columns = columns
         self.cardViewModels = cardViewModels
         self.numberOfCardsFlipped = numberOfCardsFlipped
+        
+        //Comment out this section to compile
 //        self.firstCard = firstCard
 //        self.secondCard = secondCard
     }
@@ -46,9 +50,11 @@ extension CardsViewModel {
                 repeating: .init(.flexible()),
                 count: columnCount
             )
-//            ,firstCard: Card,
-//            secondCard: "
+            //Comment out this section to compile
+//            ,firstCard: CardViewModel, secondCard: CardViewModel
             
         )
     }
 }
+
+

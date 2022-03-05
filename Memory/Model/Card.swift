@@ -10,7 +10,9 @@ import SwiftUI
 
 struct Card: Equatable {
     
+    //Comment out `?` to compile
     let symbol: Symbol
+    
     
 }
 
@@ -22,7 +24,7 @@ extension Card {
             rawValue
         }
         
-        case one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen
+        case one, two, three, four, five, six, seven, eight
         
     }
 }

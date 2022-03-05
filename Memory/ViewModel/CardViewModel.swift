@@ -8,11 +8,11 @@
 import Foundation
 
 final class CardViewModel: Identifiable, Hashable, ObservableObject {
-
+    
     let card: Card
     @Published var isFlipped: Bool
     @Published var isMatched: Bool
-
+    
     
     init(
         card: Card,
@@ -21,7 +21,7 @@ final class CardViewModel: Identifiable, Hashable, ObservableObject {
     ){
         self.card = card
         self.isFlipped = isFlipped
-        self.isMatched = isFlipped
+        self.isMatched = isMatched
     }
 }
 
