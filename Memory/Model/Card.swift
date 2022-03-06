@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct Card: Equatable {
+struct Card: Equatable, Identifiable, Hashable {
     
-    //Comment out `?` to compile
     let symbol: Symbol
-    
+    let id = UUID()
     
 }
 
@@ -26,5 +25,20 @@ extension Card {
         
         case one, two, three, four, five, six, seven, eight
         
+    }
+}
+
+extension Card {
+    
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        guard lhs.id == rhs.id else {
+            return false
+        }
+        assert(lhs.symbol == rhs.symbol)
+        return true
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

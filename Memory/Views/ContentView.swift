@@ -9,14 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var viewModel: CardVM
 
     var body: some View {
-        GridView(viewModel: CardsViewModel())
+        GridView(viewModel: viewModel)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+

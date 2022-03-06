@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */; };
+		E53C25D727D4E57D0057BFBB /* CardsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53C25D627D4E57D0057BFBB /* CardsVM.swift */; };
 		E557045F27CE77F500D8DA65 /* MemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557045E27CE77F500D8DA65 /* MemoryApp.swift */; };
 		E557046127CE77F500D8DA65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557046027CE77F500D8DA65 /* ContentView.swift */; };
 		E557046327CE77F600D8DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E557046227CE77F600D8DA65 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardsViewModel+functions.swift"; sourceTree = "<group>"; };
+		E53C25D627D4E57D0057BFBB /* CardsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsVM.swift; sourceTree = "<group>"; };
 		E557045B27CE77F500D8DA65 /* Memory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E557045E27CE77F500D8DA65 /* MemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryApp.swift; sourceTree = "<group>"; };
 		E557046027CE77F500D8DA65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				E5A5BD0F27CF585700CC318C /* CardsViewModel.swift */,
 				E5A5BD1727CFA0CB00CC318C /* CardViewModel.swift */,
+				E53C25D627D4E57D0057BFBB /* CardsVM.swift */,
 				E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */,
 			);
 			path = ViewModel;
@@ -317,6 +320,7 @@
 				E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */,
 				E5A5BD1527CF663100CC318C /* Card.swift in Sources */,
 				E557048A27CE792700D8DA65 /* CardView.swift in Sources */,
+				E53C25D727D4E57D0057BFBB /* CardsVM.swift in Sources */,
 				E5A5BD1827CFA0CB00CC318C /* CardViewModel.swift in Sources */,
 				E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */,
 				E5A5BD1027CF585700CC318C /* CardsViewModel.swift in Sources */,
