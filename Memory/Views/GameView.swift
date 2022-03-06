@@ -8,24 +8,26 @@
 import Foundation
 import SwiftUI
 
-struct GridView: View {
-    @ObservedObject var viewModel: CardVM
+struct GameView: View {
+    @ObservedObject var viewModel: CardsViewModel
 }
 
-extension GridView {
+extension GameView {
     var body: some View {
         LazyVGrid(columns: viewModel.columns, spacing: 10) {
             ForEach($viewModel.cards, id: \.self) { $card in
                 Button(
                     action: {
-//                        viewModel.flipCard(card)
+                        viewModel.flipCard(card: card)
+                        card.isFaceUp.toggle()
+                        
                     } ,
                     label: {
-                        CardView(card: card.symbol.display)
-                        
-                    })
+                        CardView(card: card)
+                           
+                    }
+                )
             }
         }
     }
 }
-

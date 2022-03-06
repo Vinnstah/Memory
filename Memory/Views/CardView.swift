@@ -10,16 +10,20 @@ import SwiftUI
 
 struct CardView: View {
     
-    let card: Card.Symbol.RawValue
+    var card: Card
     
     var body: some View {
         ZStack{
-            Rectangle()
+            RoundedRectangle(cornerRadius: 20)
+                .fill(card.isFaceUp ? Color.blue : Color.teal)
                 .frame(width: UIScreen.screenWidth / 4 - 10,
                        height: UIScreen.screenHeight / 5)
-                .cornerRadius(20)
-            Text(card).foregroundColor(.white)
-            //                .opacity(viewModel.isFlipped ? 100 : 0)
+            
+            
+            (card.isFaceUp ? Text(card.symbol.display).foregroundColor(.white) : Text(""))
+                  
         }
     }
 }
+
+
