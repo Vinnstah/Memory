@@ -12,7 +12,7 @@ struct Card: Equatable, Identifiable, Hashable {
     
     let symbol: Symbol
     let id = UUID()
-    var isFaceUp: Bool = false
+    var isCardFaceUp: Bool
     
 }
 

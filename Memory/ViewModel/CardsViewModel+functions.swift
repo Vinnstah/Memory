@@ -10,27 +10,30 @@ import SwiftUI
 
 extension CardsViewModel {
     
-    func flipCard(card: Card) {
-//        flippedCardID == card.id &&
+    func didTapCard(card: Card) {
         guard isCardFlippable(card) else {
             return
         }
         
-        flippedCardID = card.id
+        idOfFirstFlippedCard = card.id
+        
+        
+        // TODO: Need to figure out how to mutate state for isCardFaceUp
+//        card.isCardFaceUp.toggl
+       
+        
 
         
     }
     
-    func checkIfTwoCardsAreEqual(_ card1: Card, _ card2: Card) -> Bool {
-        guard card1.symbol.display == card2.symbol.display else {
-            return false
-        }
-        return card1.id == card2.id
+    func checkForMatchingSymbols(of card1: Card, and card2: Card) -> Bool {
+        precondition(card1 != card2)
+        return card1.symbol == card2.symbol
         
     }
     
     func checkIfCardIsFlippedOrMatched(_ card: Card) -> Bool {
-        guard card.id == flippedCardID && !matchedCardIDs.contains(card.id) else {
+        guard card.id == idOfSecondFlippedCard && !matchedCardIDs.contains(card.id) else {
             return false
         }
         
@@ -40,8 +43,9 @@ extension CardsViewModel {
     
     
     func isCardFlippable(_ card: Card) -> Bool {
-//        card.id != flippedCardID && 
-        !matchedCardIDs.contains(card.id)
+        !matchedCardIDs.contains(card.id) &&
+        card.id != idOfSecondFlippedCard
+//        || idOfSecondFlippedCard)
     }
     
 }
