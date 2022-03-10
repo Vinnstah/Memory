@@ -12,6 +12,7 @@ final class CardsViewModel: ObservableObject {
     
     @Published var idOfFirstFlippedCard: Card.ID?
     @Published var idOfSecondFlippedCard: Card.ID?
+    @Published var symbolOfFirstFlippedCard: Card.Symbol?
     var symbols: [Card.Symbol] = Card.Symbol.allCases.map {
         Card.Symbol(rawValue: $0.display) ?? .one}
     
@@ -25,9 +26,11 @@ final class CardsViewModel: ObservableObject {
     let columns: [GridItem]
     var matchedCardIDs: Set<Card.ID>
     
+    
     init(
         idOfFirstFlippedCard: Card.ID? = nil,
         idOfSecondFlippedCard: Card.ID? = nil,
+        symbolOfFirstFlippedCard: Card.Symbol? = nil,
         columns: [GridItem] = .init(
             repeating: .init(.flexible()),
             count: 4),
@@ -38,10 +41,9 @@ final class CardsViewModel: ObservableObject {
 
         self.idOfFirstFlippedCard = idOfFirstFlippedCard
         self.idOfSecondFlippedCard = idOfSecondFlippedCard
+        self.symbolOfFirstFlippedCard = symbolOfFirstFlippedCard
         self.columns = columns
         self.matchedCardIDs = matchedCardIDs
-        print("init")
-        print(cards)
         
     }
     

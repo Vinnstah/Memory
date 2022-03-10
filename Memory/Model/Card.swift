@@ -8,13 +8,6 @@
 import Foundation
 import SwiftUI
 
-//struct Card: Equatable, Identifiable, Hashable {
-//
-//    let symbol: Symbol
-//    let id = UUID()
-//    var checkIfIsFlipped: Bool
-//
-//}
 struct Card: Hashable, Identifiable {
     typealias ID = UUID
 
