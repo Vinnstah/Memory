@@ -12,28 +12,37 @@ final class CardsViewModel: ObservableObject {
     
     @Published var idOfFirstFlippedCard: Card.ID?
     @Published var idOfSecondFlippedCard: Card.ID?
-    var cards: [Card]
+    var symbols: [Card.Symbol] = Card.Symbol.allCases.map {
+        Card.Symbol(rawValue: $0.display) ?? .one}
+    
+    lazy var cards: [Card] = {
+        
+        symbols.duplicate().shuffled().map {
+            symbol in Card(symbol: symbol,
+                           checkIfIsFlippedByCardID: {
+                [unowned self] cardID in self.checkIfCardWithIDIsFlipped(cardID) }) } }()
+    
     let columns: [GridItem]
     var matchedCardIDs: Set<Card.ID>
     
-    init(cards: [Card] = Card.Symbol.allCases.duplicate().map {
-        Card(symbol: $0, isCardFaceUp: false)}.shuffled(),
-         idOfFirstFlippedCard: Card.ID?,
-         idOfSecondFlippedCard: Card.ID?,
-         columns: [GridItem] = .init(
+    init(
+        idOfFirstFlippedCard: Card.ID? = nil,
+        idOfSecondFlippedCard: Card.ID? = nil,
+        columns: [GridItem] = .init(
             repeating: .init(.flexible()),
             count: 4),
-         matchedCardIDs: Set<Card.ID>
-         
-         
-    ){
+        matchedCardIDs: Set<Card.ID>
         
-        self.cards = cards
+        
+    ){
+
         self.idOfFirstFlippedCard = idOfFirstFlippedCard
         self.idOfSecondFlippedCard = idOfSecondFlippedCard
         self.columns = columns
         self.matchedCardIDs = matchedCardIDs
         print("init")
+        print(cards)
+        
     }
     
     deinit {

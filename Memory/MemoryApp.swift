@@ -11,7 +11,12 @@ import SwiftUI
 struct MemoryApp: App {
     var body: some Scene {
         WindowGroup {
-            GameView(viewModel: CardsViewModel(idOfFirstFlippedCard: .init(), idOfSecondFlippedCard: .init(), matchedCardIDs: .init()))
+            GameView(viewModel:
+                        CardsViewModel(
+//                            cards: .init(),
+//                            symbols: .init(),
+                            idOfFirstFlippedCard: .init(),
+                            idOfSecondFlippedCard: .init(), matchedCardIDs: .init()))
         }
     }
 }

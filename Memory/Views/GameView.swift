@@ -16,13 +16,14 @@ extension GameView {
     var body: some View {
         LazyVGrid(columns: viewModel.columns, spacing: 10) {
             ForEach($viewModel.cards, id: \.self) { $card in
-                CardView(card: card, cardIsFaceUp: card.isCardFaceUp)
-                
+     
+                CardView(card: card)
                     .onTapGesture {
-                        
+
                         viewModel.didTapCard(card: card)
-                        
+                        print("tap")
                     }
+                   
             }
             
         }

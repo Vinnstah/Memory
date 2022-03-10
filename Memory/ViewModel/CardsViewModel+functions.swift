@@ -11,18 +11,14 @@ import SwiftUI
 extension CardsViewModel {
     
     func didTapCard(card: Card) {
-        guard isCardFlippable(card) else {
+        // TODO: FIX THIS FUNCTION. Not developed yet and not working.
+        guard card.id == idOfFirstFlippedCard else {
             return
         }
-        
+
         idOfFirstFlippedCard = card.id
         
         
-        // TODO: Need to figure out how to mutate state for isCardFaceUp
-//        card.isCardFaceUp.toggl
-       
-        
-
         
     }
     
@@ -41,11 +37,17 @@ extension CardsViewModel {
         
     }
     
+    func checkIfCardWithIDIsFlipped(_ cardID: Card.ID) -> Bool {
+        print(cards)
+        return cardID == idOfFirstFlippedCard
+        
+    }
+    
     
     func isCardFlippable(_ card: Card) -> Bool {
         !matchedCardIDs.contains(card.id) &&
         card.id != idOfSecondFlippedCard
-//        || idOfSecondFlippedCard)
+
     }
     
 }
