@@ -10,54 +10,69 @@ import SwiftUI
 extension CardsViewModel {
     
     func didTapCard(card: Card) {
-        // TODO: clean up functions
-        guard card.id != idOfFirstFlippedCard else {
-            return ()
-        }
-        
-        if idOfFirstFlippedCard == nil {
-            idOfFirstFlippedCard = card.id
-            symbolOfFirstFlippedCard = card.symbol
+        guard card.id != idOfFirstFlippedCard && !checkIfCardWithIDIsFlipped(card.id)  else {
             return
         }
         
-        else {
-            idOfSecondFlippedCard = card.id
-            
+        guard let checkIfFirstCardIsFlipped = idOfFirstFlippedCard else {
+            idOfFirstFlippedCard = card.id
+            return
         }
-        
-        //Currently bugged for first click, will alway run when you click the first card.
+
+        idOfSecondFlippedCard = card.id
+
+        //After 2 cards has been flipped we'll check if they match and then after 1 second delay flip them back if there's no match.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            
+            defer {
+                self.idOfFirstFlippedCard = nil
+                self.idOfSecondFlippedCard = nil
+            }
+            
+            guard let idOfFirstCard = self.idOfFirstFlippedCard else {
+                return
+            }
+            
             if self.checkForMatchingSymbols(
                 of: card.symbol,
-                and: self.symbolOfFirstFlippedCard ?? .eight)
+                and: self.cardByID(self.idOfFirstFlippedCard!).symbol)
             {
-                self.matchedCardIDs.insert(card.id)
-                self.matchedCardIDs.insert(self.idOfFirstFlippedCard ?? card.id)
-                print("Matched card ID: \(self.matchedCardIDs)")
+                self.matchedCardIDs.insert(card.id, idOfFirstCard)
                 
             }
-            print("Matched card ID: \(self.matchedCardIDs)")
-            
-            self.idOfFirstFlippedCard = nil
-            self.idOfSecondFlippedCard = nil
         })
-        
     }
+}
+
+extension CardsViewModel {
     
+    //Function to check if two symbols match.
     func checkForMatchingSymbols(of card1: Card.Symbol, and card2: Card.Symbol) -> Bool {
-        //        precondition(card1 != card2)
         if card1 == card2 {
-            return true } else {
-                return false
-            }
+            return true
+        } else {
+            return false
+        }
     }
     
     
     //Function to check if card.id is the same as either idOfFirstFlippedCard or second.
     func checkIfCardWithIDIsFlipped(_ cardID: Card.ID) -> Bool {
-        if cardID == idOfFirstFlippedCard || cardID == idOfSecondFlippedCard || matchedCardIDs.contains(cardID){ return true }
-        else { return false }
+        if cardID == idOfFirstFlippedCard ||
+            cardID == idOfSecondFlippedCard ||
+            matchedCardIDs.contains(cardID){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    //Function to return a Card from its Card ID
+    func cardByID(_ cardID: Card.ID) -> Card {
+        guard let card = cards.first(where: { $0.id == cardID }) else
+        { fatalError("ID not amongst cards, we expect this to never happen, from where did you get this ID?") }
+        return card
     }
     
 }

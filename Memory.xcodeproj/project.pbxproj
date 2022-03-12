@@ -20,6 +20,7 @@
 		E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */; };
 		E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD1127CF5B1200CC318C /* GameView.swift */; };
 		E5A5BD1527CF663100CC318C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD1427CF663100CC318C /* Card.swift */; };
+		E5BE971227DCD61700B449E7 /* Extension+Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE971127DCD61700B449E7 /* Extension+Set.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIScreen.swift"; sourceTree = "<group>"; };
 		E5A5BD1127CF5B1200CC318C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E5A5BD1427CF663100CC318C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E5BE971127DCD61700B449E7 /* Extension+Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Set.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */,
 				E59D14BA27D2D40000E34AAF /* Extension+Array.swift */,
+				E5BE971127DCD61700B449E7 /* Extension+Set.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */,
 				E5A5BD1527CF663100CC318C /* Card.swift in Sources */,
+				E5BE971227DCD61700B449E7 /* Extension+Set.swift in Sources */,
 				E557048A27CE792700D8DA65 /* CardView.swift in Sources */,
 				E53C25D727D4E57D0057BFBB /* CardsViewModel.swift in Sources */,
 				E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */,

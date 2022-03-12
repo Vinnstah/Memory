@@ -17,7 +17,7 @@ extension GameView {
         LazyVGrid(columns: viewModel.columns, spacing: 10) {
             ForEach($viewModel.cards, id: \.self) { $card in
                 
-                CardView(card: card, isCardFlipped: card.checkIfIsFlipped())
+                CardView(card: card, isFlipped: card.checkIfIsFlipped())
                 
                     .onTapGesture {
                         viewModel.didTapCard(card: card)

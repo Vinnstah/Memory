@@ -12,11 +12,7 @@ struct MemoryApp: App {
     var body: some Scene {
         WindowGroup {
             GameView(viewModel:
-                        CardsViewModel(
-//                            cards: .init(),
-//                            symbols: .init(),
-                            idOfFirstFlippedCard: .init(),
-                            idOfSecondFlippedCard: .init(), matchedCardIDs: .init()))
+                        CardsViewModel())
         }
     }
 }
