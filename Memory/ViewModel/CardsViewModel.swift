@@ -1,8 +1,8 @@
 //
-//  GridViewModel.swift
+//  CardVM.swift
 //  Memory
 //
-//  Created by Viktor Jansson on 2022-03-02.
+//  Created by Viktor Jansson on 2022-03-06.
 //
 
 import Foundation
@@ -10,47 +10,28 @@ import SwiftUI
 
 final class CardsViewModel: ObservableObject {
     
-    @Published var cardViewModels: [CardViewModel]
-    @Published var numberOfCardsFlipped: Int
-    var columns: [GridItem]
-    @Published var idOfFlippedCard: CardViewModel.ID?
-
+    @Published var idOfFirstFlippedCard: Card.ID? = nil
+    @Published var idOfSecondFlippedCard: Card.ID? = nil
+    let columns: [GridItem]
+    var matchedCardIDs: Set<Card.ID> = []
+    var symbols: [Card.Symbol] = Card.Symbol.allCases.map {
+        Card.Symbol(rawValue: $0.display)!}
     
-    init(columns: [GridItem],
-         numberOfCardsFlipped: Int = 0,
-         cardViewModels: [CardViewModel] = Card.Symbol.allCases.duplicate().map {
-        CardViewModel(card: Card(symbol: $0))}.shuffled()
-         
-         //Comment out this section to compile
-         ,idOfFlippedCard: CardViewModel.ID? = nil
-    ) {
-        self.columns = columns
-        self.cardViewModels = cardViewModels
-        self.numberOfCardsFlipped = numberOfCardsFlipped
+    lazy var cards: [Card] = {
         
-        //Comment out this section to compile
-        self.idOfFlippedCard = idOfFlippedCard
+        symbols.duplicate().shuffled().map {
+            symbol in Card(symbol: symbol,
+                           checkIfIsFlippedByCardID: {
+                [unowned self] cardID in self.checkIfCardWithIDIsFlipped(cardID) }) } }()
+
+    init(
+        columns: [GridItem] = .init(
+            repeating: .init(.flexible()),
+            count: 4)
+    ){
+        self.columns = columns
     }
     
-}
-
-
-extension CardsViewModel {
-    
-    convenience init(
-        columnCount: Int = 4
-    ) {
-        self.init(
-            
-            columns: .init(
-                repeating: .init(.flexible()),
-                count: columnCount
-            )
-            //Comment out this section to compile
-//            ,firstCard: CardViewModel, secondCard: CardViewModel
-            
-        )
-    }
 }
 
 
