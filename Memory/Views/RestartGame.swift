@@ -12,7 +12,6 @@ struct RestartGame: View {
     @ObservedObject var viewModel: CardsViewModel
     
     var body: some View {
-        VStack {
             Button(action: {
                 viewModel.clearVariablesAndRestartGame()
             
@@ -20,6 +19,5 @@ struct RestartGame: View {
                 Text("Restart Game")
                 
             })
-        }
     }
 }

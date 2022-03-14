@@ -12,9 +12,7 @@ struct MemoryApp: App {
     var body: some Scene {
         WindowGroup {
             GameView(viewModel:
-                        CardsViewModel(
-//                            cards: .init()
-                        ))
+                        CardsViewModel())
         }
     }
 }
