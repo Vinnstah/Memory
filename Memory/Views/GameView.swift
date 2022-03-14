@@ -27,7 +27,10 @@ extension GameView {
             }
             
         }
-            RestartGame(viewModel: viewModel)
+            RestartGame()
+                .onTapGesture {
+                    viewModel.clearVariablesAndRestartGame()
+                }
     }
     }
 }

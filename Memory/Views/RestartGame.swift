@@ -9,15 +9,18 @@ import Foundation
 import SwiftUI
 
 struct RestartGame: View {
-    @ObservedObject var viewModel: CardsViewModel
+
     
     var body: some View {
-            Button(action: {
-                viewModel.clearVariablesAndRestartGame()
+        ZStack {
             
-            }, label: {
-                Text("Restart Game")
-                
-            })
+        RoundedRectangle(cornerRadius: 25)
+            .frame(width: UIScreen.screenWidth/3, height: 40, alignment: .center)
+            .foregroundColor(.blue)
+            
+            Text("Restart Game")
+                .foregroundColor(.white)
+
+        }
     }
 }

@@ -22,7 +22,12 @@ struct CardView: View {
                        height: UIScreen.screenHeight / 5)
             
             
-            (isFlipped ? Text(card.symbol.display).foregroundColor(.white) : Text(""))
+            (isFlipped ?
+             Text(card.symbol.display)
+                .font(.system(size: 50))
+                .foregroundColor(.white)
+             :
+                Text(""))
                   
         }
     }
