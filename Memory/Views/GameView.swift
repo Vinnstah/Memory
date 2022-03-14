@@ -14,6 +14,7 @@ struct GameView: View {
 
 extension GameView {
     var body: some View {
+        VStack {
         LazyVGrid(columns: viewModel.columns, spacing: 10) {
             ForEach($viewModel.cards, id: \.self) { $card in
                 
@@ -26,5 +27,7 @@ extension GameView {
             }
             
         }
+            RestartGame(viewModel: viewModel)
+    }
     }
 }

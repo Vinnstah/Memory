@@ -14,13 +14,13 @@ extension CardsViewModel {
             return
         }
         
-        guard let checkIfFirstCardIsFlipped = idOfFirstFlippedCard else {
+        guard let idOfFirstFlippedCard = idOfFirstFlippedCard else {
             idOfFirstFlippedCard = card.id
             return
         }
-
+        
         idOfSecondFlippedCard = card.id
-
+        
         //After 2 cards has been flipped we'll check if they match and then after 1 second delay flip them back if there's no match.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             
@@ -57,7 +57,7 @@ extension CardsViewModel {
     
     
     //Function to check if card.id is the same as either idOfFirstFlippedCard or second.
-    func checkIfCardWithIDIsFlipped(_ cardID: Card.ID) -> Bool {
+    public func checkIfCardWithIDIsFlipped(_ cardID: Card.ID) -> Bool {
         if cardID == idOfFirstFlippedCard ||
             cardID == idOfSecondFlippedCard ||
             matchedCardIDs.contains(cardID){
@@ -75,4 +75,18 @@ extension CardsViewModel {
         return card
     }
     
+}
+
+extension CardsViewModel {
+    
+    func clearVariablesAndRestartGame() {
+        idOfFirstFlippedCard = nil
+        idOfSecondFlippedCard = nil
+        matchedCardIDs = []
+        
+        cards = CollectionOfSymbols(chosenSymbols: .init()).chosenSymbols.duplicate().shuffled().map {
+            symbol in Card(symbol: symbol,
+                           checkIfIsFlippedByCardID: {
+                [unowned self] cardID in self.checkIfCardWithIDIsFlipped(cardID) }) }
+    }
 }
