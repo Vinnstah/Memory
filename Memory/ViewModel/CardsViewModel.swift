@@ -16,8 +16,8 @@ final class CardsViewModel: ObservableObject {
     var matchedCardIDs: Set<Card.ID> = []
     
     lazy var cards: [Card] = CollectionOfSymbols(
-        chosenSymbols: .init()).chosenSymbols.duplicate().shuffled().map {
-                    symbol in Card(symbol: symbol,
+        chosenSymbols: .init(), chooseASymbol: .init()).chosenSymbol.duplicate().shuffled().map {
+            symbol in Card(symbol: symbol,
                                    checkIfIsFlippedByCardID: {
                         [unowned self] cardID in self.checkIfCardWithIDIsFlipped(cardID) }) }
 
@@ -32,3 +32,4 @@ final class CardsViewModel: ObservableObject {
 }
 
 
+    

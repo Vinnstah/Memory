@@ -6,14 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct CollectionOfSymbols {
+final class CollectionOfSymbols: ObservableObject {
     
-    var chosenSymbols: [Card.Symbol]
-    var collectionOfSymbols: [Card.Symbol] = Card.Symbol.allCases.map {
-        Card.Symbol(rawValue: $0.display)!}
+    var chosenSymbol: [Card.Symbol.Animals]
+    @Published var chooseASymbol: [Card.Symbol] = []
+//    @Binding var chosenSymbols: ChooseSymbols
     
-    init(chosenSymbols: [Card.Symbol]) {
-        self.chosenSymbols = collectionOfSymbols
+  
+    var collectionOfSymbols: [Card.Symbol.Animals] = Card.Symbol.Animals.allCases.map {
+        Card.Symbol.Animals(rawValue: $0.display)!}
+    
+    init(chosenSymbols: [Card.Symbol],
+         chooseASymbol: [Card.Symbol]) {
+        self.chosenSymbol = collectionOfSymbols
+        self.chooseASymbol = chooseASymbol
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: CardsViewModel
+    @State var test: [Card.Symbol] = []
 }
 
 extension GameView {
@@ -31,6 +32,7 @@ extension GameView {
                 .onTapGesture {
                     viewModel.clearVariablesAndRestartGame()
                 }
+            ChooseSymbols(symbolTypes: .init(), test: $test)
     }
     }
 }

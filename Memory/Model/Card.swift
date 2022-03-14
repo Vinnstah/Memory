@@ -11,14 +11,14 @@ import SwiftUI
 struct Card: Hashable, Identifiable {
     typealias ID = UUID
     
-    let symbol: Symbol
+    let symbol: Symbol.Animals
     let id: ID
     
     // Function taking no argument
     let checkIfIsFlipped: () -> Bool
     
     init(
-        symbol: Symbol,
+        symbol: Symbol.Animals,
         checkIfIsFlippedByCardID: @escaping (Card.ID) -> Bool
     ) {
         self.symbol = symbol
@@ -40,28 +40,57 @@ struct Card: Hashable, Identifiable {
 
 extension Card {
     
-    enum Symbol: String, Equatable, CaseIterable {
+    enum Symbol: Equatable, Hashable {
         
         var display: String {
-            rawValue
+            switch self {
+            case .animals(let animals): return animals.display
+            case .numbers(let numbers): return numbers.display
+            }
+
         }
         
+        case animals(Animals)
+        case numbers(Numbers)
         //        case chosenSymbol(Animals)
         //        case chosenSymbol(Numbers)
         
 //        case 1️⃣,2️⃣,3️⃣,4️⃣,5️⃣,6️⃣,7️⃣,8️⃣
 //        case one, two, three, four, five, six, seven, eight
-        case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
-
+//        case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
+    }
     }
     
-    enum Animals: String, Equatable, CaseIterable {
+
+
+//extension Card.Symbol {
+//    var display: String {
+//        switch chosen:
+//    case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
+//    }
+//
+//}
+
+extension Card.Symbol {
+    enum Animals: String, Equatable, CaseIterable, Hashable {
         var display: String {
             rawValue
         }
-        
+
         case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
-        
+
+    }
+}
+
+extension Card.Symbol {
+    enum Numbers: String, Equatable, CaseIterable, Hashable {
+        var display: String {
+            rawValue
+        }
+
+        case ①,②,⓷,④,⑤,⑥,⑦,⑧,⑨
+//        1️⃣,2️⃣,3️⃣,4️⃣,5️⃣,6️⃣,7️⃣,8️⃣
+
     }
 }
 
