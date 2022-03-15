@@ -11,14 +11,14 @@ import SwiftUI
 struct Card: Hashable, Identifiable {
     typealias ID = UUID
     
-    let symbol: Symbol.Animals
+    let symbol: Symbol
     let id: ID
     
     // Function taking no argument
     let checkIfIsFlipped: () -> Bool
     
     init(
-        symbol: Symbol.Animals,
+        symbol: Symbol,
         checkIfIsFlippedByCardID: @escaping (Card.ID) -> Bool
     ) {
         self.symbol = symbol
@@ -47,52 +47,101 @@ extension Card {
             case .animals(let animals): return animals.display
             case .numbers(let numbers): return numbers.display
             }
-
+            
         }
+        
         
         case animals(Animals)
         case numbers(Numbers)
-        //        case chosenSymbol(Animals)
-        //        case chosenSymbol(Numbers)
         
-//        case 1️⃣,2️⃣,3️⃣,4️⃣,5️⃣,6️⃣,7️⃣,8️⃣
-//        case one, two, three, four, five, six, seven, eight
-//        case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
     }
-    }
-    
+}
 
-
-//extension Card.Symbol {
-//    var display: String {
-//        switch chosen:
-//    case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
-//    }
-//
-//}
 
 extension Card.Symbol {
     enum Animals: String, Equatable, CaseIterable, Hashable {
+        
         var display: String {
-            rawValue
+            switch self {
+            case .bear: return "🐻"
+            case .cat: return "🐱"
+            case .dog: return "🐶"
+            case .fox: return "🦊"
+            case .hamster: return "🐹"
+            case .mouse: return "🐭"
+            case .panda: return "🐼"
+            case .rabbit: return "🐰"
+            }
         }
-
-        case 🐶,🐱,🐭,🐹,🐰,🦊,🐻,🐼
-
+        
+        case mouse, dog, cat, fox, panda, rabbit, bear, hamster
+       
+        
     }
 }
 
 extension Card.Symbol {
     enum Numbers: String, Equatable, CaseIterable, Hashable {
+        
         var display: String {
-            rawValue
+            switch self {
+            case .one: return "①"
+            case .two: return "②"
+            case .three: return "⓷"
+            case .four: return "④"
+            case .five: return "⑤"
+            case .six: return "⑥"
+            case .seven: return "⑦"
+            case .eight: return "⑧"
+            }
         }
-
-        case ①,②,⓷,④,⑤,⑥,⑦,⑧,⑨
-//        1️⃣,2️⃣,3️⃣,4️⃣,5️⃣,6️⃣,7️⃣,8️⃣
-
+        
+        var description: Card.Symbol {
+            switch self {
+            case .one: return .numbers(.one)
+            case .two: return .numbers(.two)
+            case .three: return .numbers(.three)
+            case .four: return .numbers(.four)
+            case .five: return .numbers(.five)
+            case .six: return .numbers(.six)
+            case .seven: return .numbers(.seven)
+            case .eight: return .numbers(.eight)
+            }
+        }
+        
+        case one, two, three, four, five, six, seven, eight
+        
     }
 }
+
+extension Card.Symbol {
+
+    var stripped: Stripped {
+        switch self {
+        case .animals: return .animals
+        case .numbers: return .numbers
+        }
+    }
+}
+
+extension Card.Symbol {
+    enum Stripped: Hashable {
+        
+        case animals
+        case numbers
+    }
+}
+
+extension Card.Symbol.Stripped {
+    
+    var description: Card.Symbol {
+        switch self {
+        case .numbers: return .numbers(.two)
+        case .animals: return .animals(.rabbit)
+        }
+    }
+}
+
 
 
 

@@ -32,7 +32,7 @@ extension GameView {
                 .onTapGesture {
                     viewModel.clearVariablesAndRestartGame()
                 }
-            ChooseSymbols(symbolTypes: .init(), test: $test)
+//            ChooseSymbols(symbolTypes: Card.Symbol, test: $test)
     }
     }
 }

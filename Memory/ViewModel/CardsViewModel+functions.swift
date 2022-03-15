@@ -47,8 +47,8 @@ extension CardsViewModel {
 extension CardsViewModel {
     
     //Function to check if two symbols match.
-    func checkForMatchingSymbols(of card1: Card.Symbol.Animals, and card2: Card.Symbol.Animals) -> Bool {
-        if card1 == card2 {
+    func checkForMatchingSymbols(of card1: Card.Symbol, and card2: Card.Symbol) -> Bool {
+        if card1.display == card2.display {
             return true
         } else {
             return false
@@ -84,7 +84,7 @@ extension CardsViewModel {
         idOfSecondFlippedCard = nil
         matchedCardIDs = []
         
-        cards = CollectionOfSymbols(chosenSymbols: .init(), chooseASymbol: .init()).chosenSymbol.duplicate().shuffled().map {
+        cards = symbols.duplicate().shuffled().map {
             symbol in Card(symbol: symbol,
                            checkIfIsFlippedByCardID: {
                 [unowned self] cardID in self.checkIfCardWithIDIsFlipped(cardID) }) }
