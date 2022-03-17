@@ -16,6 +16,7 @@
 		E557047A27CE77F600D8DA65 /* MemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557047927CE77F600D8DA65 /* MemoryUITests.swift */; };
 		E557047C27CE77F600D8DA65 /* MemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557047B27CE77F600D8DA65 /* MemoryUITestsLaunchTests.swift */; };
 		E557048A27CE792700D8DA65 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557048927CE792700D8DA65 /* CardView.swift */; };
+		E56BE43927E377A2008DB773 /* SymbolsetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE43827E377A1008DB773 /* SymbolsetButtonView.swift */; };
 		E59D14BB27D2D40100E34AAF /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D14BA27D2D40000E34AAF /* Extension+Array.swift */; };
 		E5A4DA3627DF28BD00064F9A /* RestartGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4DA3527DF28BD00064F9A /* RestartGame.swift */; };
 		E5A4DA3A27DF7C2200064F9A /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4DA3927DF7C2200064F9A /* StartupView.swift */; };
@@ -55,6 +56,7 @@
 		E557047927CE77F600D8DA65 /* MemoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUITests.swift; sourceTree = "<group>"; };
 		E557047B27CE77F600D8DA65 /* MemoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E557048927CE792700D8DA65 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E56BE43827E377A1008DB773 /* SymbolsetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsetButtonView.swift; sourceTree = "<group>"; };
 		E59D14BA27D2D40000E34AAF /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
 		E5A4DA3527DF28BD00064F9A /* RestartGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartGame.swift; sourceTree = "<group>"; };
 		E5A4DA3927DF7C2200064F9A /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				E557048927CE792700D8DA65 /* CardView.swift */,
 				E5A4DA3527DF28BD00064F9A /* RestartGame.swift */,
 				E5A4DA3927DF7C2200064F9A /* StartupView.swift */,
+				E56BE43827E377A1008DB773 /* SymbolsetButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				E53C25D727D4E57D0057BFBB /* CardsViewModel.swift in Sources */,
 				E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */,
 				E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */,
+				E56BE43927E377A2008DB773 /* SymbolsetButtonView.swift in Sources */,
 				E557045F27CE77F500D8DA65 /* MemoryApp.swift in Sources */,
 				E59D14BB27D2D40100E34AAF /* Extension+Array.swift in Sources */,
 			);

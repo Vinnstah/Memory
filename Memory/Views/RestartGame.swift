@@ -15,8 +15,8 @@ struct RestartGame: View {
         ZStack {
             
         RoundedRectangle(cornerRadius: 25)
-            .frame(width: UIScreen.screenWidth/3, height: 40, alignment: .center)
-            .foregroundColor(.blue)
+            .frame(width: UIScreen.screenWidth/3, height: 30, alignment: .center)
+            .foregroundColor(.red)
             
             Text("Restart Game")
                 .foregroundColor(.white)

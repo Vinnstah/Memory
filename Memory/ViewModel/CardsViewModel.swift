@@ -14,11 +14,10 @@ final class CardsViewModel: ObservableObject {
     @Published var idOfSecondFlippedCard: Card.ID? = nil
     let columns: [GridItem]
     var matchedCardIDs: Set<Card.ID> = []
-    @Published var symbolSet: [Card.Symbol] = []
-    var symbols: [Card.Symbol]
-    
-//    @Published var symbolSet: [Card.Symbol.Stripped] = []
-//    var symbols: [Card.Symbol.Stripped]
+    var symbols: [Card.Symbol] = Card.Symbol.allCases.map { Card.Symbol(rawValue: $0.display)!
+//        Card.Symbol(rawValue: $0.display)
+        
+    }
     
     lazy var cards: [Card] = symbols.duplicate().shuffled().map {
         symbol in Card(symbol: symbol,
@@ -28,13 +27,10 @@ final class CardsViewModel: ObservableObject {
     init(
         columns: [GridItem] = .init(
             repeating: .init(.flexible()),
-            count: 4),
-        symbols: [Card.Symbol],
-        symbolSet: [Card.Symbol]
+            count: 4)
+        
     ){
         self.columns = columns
-        self.symbols = symbolSet
-        self.symbolSet = symbolSet
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension Array {
     
@@ -18,3 +19,14 @@ extension Array {
     }
 }
 
+//extension View {
+//    func frameModifier() -> RoundedRectangle {
+//
+//        let rectangle = self.frame(width: UIScreen.screenWidth / 4 - 10,
+//                   height: UIScreen.screenHeight / 5)
+//        
+//        return rectangle
+//    
+//    }
+//    
+//}

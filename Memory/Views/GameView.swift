@@ -10,7 +10,6 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: CardsViewModel
-    @State var test: [Card.Symbol] = []
 }
 
 extension GameView {
@@ -19,12 +18,12 @@ extension GameView {
         LazyVGrid(columns: viewModel.columns, spacing: 10) {
             ForEach($viewModel.cards, id: \.self) { $card in
                 
-                CardView(card: card, isFlipped: card.checkIfIsFlipped())
-                
+                CardView(card: card, isFlipped: card.checkIfIsFlipped(), onTapAction: {
+                    viewModel.didTapCard(card: card)
+                })
                     .onTapGesture {
                         viewModel.didTapCard(card: card)
                     }
-                   
             }
             
         }
@@ -32,7 +31,6 @@ extension GameView {
                 .onTapGesture {
                     viewModel.clearVariablesAndRestartGame()
                 }
-//            ChooseSymbols(symbolTypes: Card.Symbol, test: $test)
-    }
+        }.padding()
     }
 }

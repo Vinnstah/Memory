@@ -11,7 +11,7 @@ import SwiftUI
 struct MemoryApp: App {
     var body: some Scene {
         WindowGroup {
-            StartupView(viewModel: CardsViewModel(symbols: .init(), symbolSet: .init()))
+            StartupView(viewModel: CardsViewModel())
         }
     }
 }

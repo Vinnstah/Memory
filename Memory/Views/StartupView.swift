@@ -13,26 +13,44 @@ struct StartupView: View {
     
     var body: some View {
         NavigationView {
-        VStack {
-            HStack {
-                Button(action: {
-                    viewModel.symbolSet = [Card.Symbol.Stripped.numbers.description]
-                }, label: {
-                    Text("Numbers")
-                })
-                Button(action: {
-                    viewModel.symbolSet = [Card.Symbol.Stripped.animals.description]
-                }, label: {
-                    Text("Animals")
-                })
-                
+            VStack {
+                Spacer()
+                HStack {
+                    VStack {
+                        
+                        Image(systemName: "number.square")
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .padding()
+                        Button(action: {
+                            
+                        }, label: {
+                            SymbolsetButtonView(buttonName: "Numbers")
+                        })
+                    }
+                    
+                    VStack {
+                        Image(systemName: "hare")
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .padding()
+                        Button(action: {
+                            
+                        }, label: {
+                            SymbolsetButtonView(buttonName: "Animals")
+                        })
+                    }
+                    
+                }
+                Spacer()
+                NavigationLink(destination: GameView(viewModel: CardsViewModel())) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 25)
+                            .frame(width: 200, height: 50)
+                        Text("Start Game")
+                            .foregroundColor(.white)
+                    }}
             }
-            
-            NavigationLink(destination: GameView(viewModel: CardsViewModel(symbols: .init(), symbolSet: viewModel.symbolSet))) {
-           
-                Text("Start Game")
-            }
-        }
         }}
 }
 
