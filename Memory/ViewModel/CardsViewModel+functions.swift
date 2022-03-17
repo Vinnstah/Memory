@@ -22,40 +22,29 @@ extension CardsViewModel {
         idOfSecondFlippedCard = card.id
         
         //After 2 cards has been flipped we'll check if they match and then after 1 second delay flip them back if there's no match.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [unowned self] in
             
             defer {
                 self.idOfFirstFlippedCard = nil
                 self.idOfSecondFlippedCard = nil
             }
-            
-            guard let idOfFirstCard = self.idOfFirstFlippedCard else {
-                return
-            }
-            
-            if self.checkForMatchingSymbols(
-                of: card.symbol,
-                and: self.cardByID(self.idOfFirstFlippedCard!).symbol)
-            {
-                self.matchedCardIDs.insert(card.id, idOfFirstCard)
+        
+            if card.representation == cardByID(idOfFirstFlippedCard).representation {
+                matchedCardIDs.insert(card.id, idOfFirstFlippedCard)
                 
             }
         })
     }
 }
 
+//func ==(lhs: Card.Symbol, rhs: Card) -> Bool {
+//    lhs == rhs.symbol
+//}
+
+
 extension CardsViewModel {
     
-    //Function to check if two symbols match.
-    func checkForMatchingSymbols(of card1: Card.Symbol, and card2: Card.Symbol) -> Bool {
-        if card1.display == card2.display {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    
+   
     //Function to check if card.id is the same as either idOfFirstFlippedCard or second.
     public func checkIfCardWithIDIsFlipped(_ cardID: Card.ID) -> Bool {
         if cardID == idOfFirstFlippedCard ||

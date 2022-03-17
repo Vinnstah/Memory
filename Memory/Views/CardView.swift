@@ -8,7 +8,7 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
     let faceUp: FaceUp
     let faceDown: FaceDown
     
-    //    @inlinable
+    @inlinable
     init(
         isFlipped: Bool,
         onTapAction: @escaping () -> Void,
@@ -24,9 +24,9 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
     var body: some View {
         Group {
             if isFlipped {
-                faceUp
-            } else {
                 faceDown
+            } else {
+                faceUp
             }
         }.onTapGesture {
             withAnimation {
@@ -36,7 +36,24 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
     }
 }
 
-extension CardView where FaceUp == AnyView, FaceDown == AnyView {
+extension CardView where FaceUp == Color {
+    init(
+        isFlipped: Bool,
+        onTapAction: @escaping () -> Void,
+        @ViewBuilder faceDown: () -> FaceDown
+    ) {
+        self.init(
+            isFlipped: isFlipped,
+            onTapAction: onTapAction,
+            faceUp: {
+                Color.teal
+            },
+            faceDown: faceDown
+        )
+    }
+    
+}
+extension CardView where FaceUp == Color, FaceDown == EmojiView {
     init(
         card: Card,
         isFlipped: Bool,
@@ -45,28 +62,54 @@ extension CardView where FaceUp == AnyView, FaceDown == AnyView {
         self.init(
             isFlipped: isFlipped,
             onTapAction: onTapAction,
-            faceUp: {
-                AnyView(
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20).fill(Color.blue)
-                            .frame(
-                                width: UIScreen.screenWidth / 4 - 10,
-                                height: UIScreen.screenHeight / 5 - 10
-                            )
-                        Text(card.symbol.display)
-                            .font(.system(size: 50))
-                            .foregroundColor(.white)
-                    })
-            },
             faceDown: {
-                AnyView(RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.teal)
-                            .frame(
-                                width: UIScreen.screenWidth / 4 - 10,
-                                height: UIScreen.screenHeight / 5 - 10
-                            ))
+                EmojiView(card)
             }
         )
+    }
+    
+}
+
+struct EmojiView: View {
+    
+    private let text: Text
+    
+    init<S>(_ string: S) where S: StringProtocol {
+        self.text = Text(string)
+    }
+    
+    var body: some View {
+        FillParentText {
+            text
+        }
+    }
+}
+
+struct FillParentText: View {
+    
+    let text: Text
+    
+    @inlinable
+    init(
+        @ViewBuilder text: () -> Text
+    ) {
+            self.text = text()
+        
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            text.font(.system(size: geometry.size.width))
+        }
+        
+    }
+    
+}
+
+extension EmojiView {
+    
+    init(_ stringRepresentable: StringRepresentable) {
+        self.init(stringRepresentable.representation)
     }
     
 }

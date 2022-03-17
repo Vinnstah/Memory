@@ -14,23 +14,41 @@ struct GameView: View {
 
 extension GameView {
     var body: some View {
-        VStack {
-        LazyVGrid(columns: viewModel.columns, spacing: 10) {
-            ForEach($viewModel.cards, id: \.self) { $card in
-                
-                CardView(card: card, isFlipped: card.checkIfIsFlipped(), onTapAction: {
-                    viewModel.didTapCard(card: card)
-                })
-                    .onTapGesture {
-                        viewModel.didTapCard(card: card)
+        
+        GeometryReader { geometry in
+            VStack {
+                LazyVGrid(columns: viewModel.columns, spacing: 10) {
+                    ForEach($viewModel.cards, id: \.self) { $card in
+                        
+                        CardView(
+                            card: card,
+                            isFlipped: card.checkIfIsFlipped(),
+                            onTapAction: {
+                                viewModel.didTapCard(card: card)
+                            }
+                        )
+                        .frame(height: geometry.size.height * 0.8 / CGFloat(viewModel.rowCount))
+                        
                     }
-            }
-            
-        }
-            RestartGame()
-                .onTapGesture {
-                    viewModel.clearVariablesAndRestartGame()
+                    
                 }
-        }.padding()
+                Spacer()
+                Button("Restart Game")
+                        {
+                    viewModel.clearVariablesAndRestartGame()
+                        }
+                        .buttonStyle(.primary)
+                    
+            }
+            .padding()
+        }
     }
+}
+
+extension CardsViewModel {
+    
+    var rowCount: Int {
+        cards.count / columns.count
+    }
+    
 }

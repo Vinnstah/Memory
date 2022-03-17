@@ -8,17 +8,21 @@
 import Foundation
 import SwiftUI
 
-struct Card: Hashable, Identifiable {
+struct Card: Hashable, Identifiable, StringRepresentable {
+    
+    
+    
     typealias ID = UUID
     
-    let symbol: Symbol
+    let symbol: StringRepresentable
+    var representation: String { symbol.representation }
     let id: ID
     
     // Function taking no argument
     let checkIfIsFlipped: () -> Bool
     
     init(
-        symbol: Symbol,
+        symbol: StringRepresentable,
         checkIfIsFlippedByCardID: @escaping (Card.ID) -> Bool
     ) {
         self.symbol = symbol
@@ -38,66 +42,73 @@ struct Card: Hashable, Identifiable {
     }
 }
 
-extension Card {
-    
-    enum Symbol: String, Equatable, Hashable, CaseIterable {
-        
-        case mouse = "🐭",
-             dog = "🐶",
-             cat = "🐱",
-             fox = "🦊",
-             panda = "🐼",
-             rabbit = "🐰",
-             bear = "🐻",
-             hamster = "🐹"
-        
-        
-        var display: String {
-            rawValue
-        }
-        
+//extension Card {
+//    
+//    enum Symbol: String, Equatable, Hashable, CaseIterable, StringRepresentable {
+//        
+//        case mouse = "🐭",
+//             dog = "🐶",
+//             cat = "🐱",
+//             fox = "🦊",
+//             panda = "🐼",
+//             rabbit = "🐰",
+//             bear = "🐻",
+//             hamster = "🐹"
+//        
+//    }
+//}
+
+protocol StringRepresentable {
+    var representation: String { get }
+}
+
+extension StringRepresentable where Self: RawRepresentable, Self.RawValue == String {
+    var representation: String {
+        rawValue
     }
 }
 
 
 //extension Card.Symbol {
-//    enum Animals: String, Equatable, CaseIterable, Hashable {
+enum Animal: String, Equatable, CaseIterable, Hashable, StringRepresentable {
+        
+        var representation: String {
+            switch self {
+            case .bear: return "🐻"
+            case .cat: return "🐱"
+            case .dog: return "🐶"
+            case .fox: return "🦊"
+            case .hamster: return "🐹"
+            case .mouse: return "🐭"
+            case .panda: return "🐼"
+            case .rabbit: return "🐰"
+            }
+        }
 //        
-//        var display: String {
-//            switch self {
-//            case .bear: return "🐻"
-//            case .cat: return "🐱"
-//            case .dog: return "🐶"
-//            case .fox: return "🦊"
-//            case .hamster: return "🐹"
-//            case .mouse: return "🐭"
-//            case .panda: return "🐼"
-//            case .rabbit: return "🐰"
-//            }
-//        }
-//        
-//        case mouse, dog, cat, fox, panda, rabbit, bear, hamster
-//       
-//        
-//    }
+        case mouse, dog, cat, fox, panda, rabbit, bear, hamster
+       
+        
+    }
 //}
 
 //extension Card.Symbol {
-//    enum Numbers: String, Equatable, CaseIterable, Hashable {
-//        
-//        var display: String {
-//            switch self {
-//            case .one: return "①"
-//            case .two: return "②"
-//            case .three: return "⓷"
-//            case .four: return "④"
-//            case .five: return "⑤"
-//            case .six: return "⑥"
-//            case .seven: return "⑦"
-//            case .eight: return "⑧"
-//            }
-//        }
-//        
+    enum Number: String, Equatable, CaseIterable, Hashable, StringRepresentable {
+        case one, two, three, four, five, six, seven, eight
+        
+        var representation: String {
+            switch self {
+            case .one: return "①"
+            case .two: return "②"
+            case .three: return "⓷"
+            case .four: return "④"
+            case .five: return "⑤"
+            case .six: return "⑥"
+            case .seven: return "⑦"
+            case .eight: return "⑧"
+            }
+        }
+    }
+//
 //        var description: Card.Symbol {
 //            switch self {
 //            case .one: return .numbers(.one)
@@ -110,8 +121,7 @@ extension Card {
 //            case .eight: return .numbers(.eight)
 //            }
 //        }
-//        
-//        case one, two, three, four, five, six, seven, eight
+//
 //        
 //    }
 //}
@@ -123,7 +133,7 @@ extension Card {
         guard lhs.id == rhs.id else {
             return false
         }
-        assert(lhs.symbol == rhs.symbol)
+        assert(lhs.representation == rhs.representation)
         return true
     }
     
