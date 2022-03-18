@@ -36,17 +36,16 @@ final class CardsViewModel: ObservableObject {
 
 
 
-enum SymbolSet: String, Equatable, CaseIterable, Identifiable {
-    case animals, numbers
-    
-    var symbols: [StringRepresentable] {
-        switch self {
-        case .animals: return Animal.allCases
-        case .numbers: return Number.allCases
-        }
-    }
-}
+
 
 extension RawRepresentable where Self: Identifiable, Self.RawValue: Hashable {
     var id: RawValue { rawValue }
+}
+
+extension CardsViewModel {
+    
+    var rowCount: Int {
+        cards.count / columns.count
+    }
+    
 }

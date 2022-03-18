@@ -10,11 +10,11 @@ import SwiftUI
 
 public struct PrimaryButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
-        
+    
     public static let defaultCornerRadius: CGFloat = 8
     private let cornerRadius: CGFloat
     private var isLoading: Bool
-
+    
     public init(
         isLoading: Bool = false,
         cornerRadius: CGFloat = Self.defaultCornerRadius
@@ -24,19 +24,19 @@ public struct PrimaryButtonStyle: ButtonStyle {
     }
     
     public func makeBody(configuration: Configuration) -> some View {
-//        Group {
-//            if isLoading {
-//                ActivityIndicator()
-//                    .frame(size: 30)
-//                    .foregroundColor(.white)
-//            } else {
-                configuration.label
+        //        Group {
+        //            if isLoading {
+        //                ActivityIndicator()
+        //                    .frame(size: 30)
+        //                    .foregroundColor(.white)
+        //            } else {
+        configuration.label
             .font(.title2)
             .foregroundColor(isEnabled ? Color.white : .gray)
-
-//            }
-//        }
-        .frame(maxWidth: .infinity, idealHeight: 50)
+        
+        //            }
+        //        }
+            .frame(maxWidth: .infinity, idealHeight: 50)
             .padding()
             .background(isEnabled ? Color.teal : .gray)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
@@ -44,7 +44,7 @@ public struct PrimaryButtonStyle: ButtonStyle {
 }
 
 public extension ButtonStyle where Self == PrimaryButtonStyle {
-
+    
     /// A button style that applies the call to the **primary** action of the
     /// current screen, rounded with the default corner radious.
     ///

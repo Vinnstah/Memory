@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */; };
+		E51802EA27E48DAB00082999 /* CardCustomizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802E927E48DAB00082999 /* CardCustomizationViewModel.swift */; };
+		E51802EC27E4C49400082999 /* ScrollViewHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802EB27E4C49400082999 /* ScrollViewHorizontal.swift */; };
+		E51802EE27E4D65600082999 /* SymbolSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802ED27E4D65600082999 /* SymbolSet.swift */; };
 		E53C25D727D4E57D0057BFBB /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53C25D627D4E57D0057BFBB /* CardsViewModel.swift */; };
 		E557045F27CE77F500D8DA65 /* MemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557045E27CE77F500D8DA65 /* MemoryApp.swift */; };
 		E557046327CE77F600D8DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E557046227CE77F600D8DA65 /* Assets.xcassets */; };
@@ -16,10 +19,9 @@
 		E557047A27CE77F600D8DA65 /* MemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557047927CE77F600D8DA65 /* MemoryUITests.swift */; };
 		E557047C27CE77F600D8DA65 /* MemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557047B27CE77F600D8DA65 /* MemoryUITestsLaunchTests.swift */; };
 		E557048A27CE792700D8DA65 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557048927CE792700D8DA65 /* CardView.swift */; };
-		E56BE43927E377A2008DB773 /* SymbolsetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE43827E377A1008DB773 /* SymbolsetButtonView.swift */; };
+		E56BE43927E377A2008DB773 /* CustomizeColorRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */; };
 		E57F0C3027E3C9C800745550 /* Extension+ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F0C2F27E3C9C800745550 /* Extension+ButtonStyle.swift */; };
 		E59D14BB27D2D40100E34AAF /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D14BA27D2D40000E34AAF /* Extension+Array.swift */; };
-		E5A4DA3627DF28BD00064F9A /* RestartGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4DA3527DF28BD00064F9A /* RestartGame.swift */; };
 		E5A4DA3A27DF7C2200064F9A /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4DA3927DF7C2200064F9A /* StartupView.swift */; };
 		E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */; };
 		E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD1127CF5B1200CC318C /* GameView.swift */; };
@@ -46,6 +48,9 @@
 
 /* Begin PBXFileReference section */
 		E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardsViewModel+functions.swift"; sourceTree = "<group>"; };
+		E51802E927E48DAB00082999 /* CardCustomizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCustomizationViewModel.swift; sourceTree = "<group>"; };
+		E51802EB27E4C49400082999 /* ScrollViewHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewHorizontal.swift; sourceTree = "<group>"; };
+		E51802ED27E4D65600082999 /* SymbolSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolSet.swift; sourceTree = "<group>"; };
 		E53C25D627D4E57D0057BFBB /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		E557045B27CE77F500D8DA65 /* Memory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E557045E27CE77F500D8DA65 /* MemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryApp.swift; sourceTree = "<group>"; };
@@ -57,10 +62,9 @@
 		E557047927CE77F600D8DA65 /* MemoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUITests.swift; sourceTree = "<group>"; };
 		E557047B27CE77F600D8DA65 /* MemoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E557048927CE792700D8DA65 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		E56BE43827E377A1008DB773 /* SymbolsetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsetButtonView.swift; sourceTree = "<group>"; };
+		E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeColorRectangle.swift; sourceTree = "<group>"; };
 		E57F0C2F27E3C9C800745550 /* Extension+ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ButtonStyle.swift"; sourceTree = "<group>"; };
 		E59D14BA27D2D40000E34AAF /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
-		E5A4DA3527DF28BD00064F9A /* RestartGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartGame.swift; sourceTree = "<group>"; };
 		E5A4DA3927DF7C2200064F9A /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
 		E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIScreen.swift"; sourceTree = "<group>"; };
 		E5A5BD1127CF5B1200CC318C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -157,9 +161,9 @@
 			children = (
 				E5A5BD1127CF5B1200CC318C /* GameView.swift */,
 				E557048927CE792700D8DA65 /* CardView.swift */,
-				E5A4DA3527DF28BD00064F9A /* RestartGame.swift */,
 				E5A4DA3927DF7C2200064F9A /* StartupView.swift */,
-				E56BE43827E377A1008DB773 /* SymbolsetButtonView.swift */,
+				E51802EB27E4C49400082999 /* ScrollViewHorizontal.swift */,
+				E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +173,7 @@
 			children = (
 				E53C25D627D4E57D0057BFBB /* CardsViewModel.swift */,
 				E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */,
+				E51802E927E48DAB00082999 /* CardCustomizationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				E5A5BD1427CF663100CC318C /* Card.swift */,
+				E51802ED27E4D65600082999 /* SymbolSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,15 +329,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */,
-				E5A4DA3627DF28BD00064F9A /* RestartGame.swift in Sources */,
 				E5A5BD1527CF663100CC318C /* Card.swift in Sources */,
 				E5BE971227DCD61700B449E7 /* Extension+Set.swift in Sources */,
 				E5A4DA3A27DF7C2200064F9A /* StartupView.swift in Sources */,
 				E557048A27CE792700D8DA65 /* CardView.swift in Sources */,
 				E53C25D727D4E57D0057BFBB /* CardsViewModel.swift in Sources */,
 				E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */,
+				E51802EC27E4C49400082999 /* ScrollViewHorizontal.swift in Sources */,
+				E51802EA27E48DAB00082999 /* CardCustomizationViewModel.swift in Sources */,
 				E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */,
-				E56BE43927E377A2008DB773 /* SymbolsetButtonView.swift in Sources */,
+				E56BE43927E377A2008DB773 /* CustomizeColorRectangle.swift in Sources */,
+				E51802EE27E4D65600082999 /* SymbolSet.swift in Sources */,
 				E557045F27CE77F500D8DA65 /* MemoryApp.swift in Sources */,
 				E57F0C3027E3C9C800745550 /* Extension+ButtonStyle.swift in Sources */,
 				E59D14BB27D2D40100E34AAF /* Extension+Array.swift in Sources */,

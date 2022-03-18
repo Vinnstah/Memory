@@ -37,9 +37,6 @@ extension CardsViewModel {
     }
 }
 
-//func ==(lhs: Card.Symbol, rhs: Card) -> Bool {
-//    lhs == rhs.symbol
-//}
 
 
 extension CardsViewModel {

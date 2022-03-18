@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: CardsViewModel
+    @ObservedObject var CardCustomViewModel: CardCustomizationViewModel
 }
 
 extension GameView {
@@ -25,9 +26,12 @@ extension GameView {
                             isFlipped: card.checkIfIsFlipped(),
                             onTapAction: {
                                 viewModel.didTapCard(card: card)
-                            }
+                            },
+                            faceDownColor: CardCustomViewModel.faceDownColor,
+                            faceUpColor: CardCustomViewModel.faceUpColor
                         )
-                        .frame(height: geometry.size.height * 0.8 / CGFloat(viewModel.rowCount))
+                            .frame(height: geometry.size.height * 0.8 / CGFloat(viewModel.rowCount))
+                        
                         
                     }
                     
@@ -45,10 +49,4 @@ extension GameView {
     }
 }
 
-extension CardsViewModel {
-    
-    var rowCount: Int {
-        cards.count / columns.count
-    }
-    
-}
+

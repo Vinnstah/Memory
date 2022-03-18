@@ -7,18 +7,24 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
     let onTapAction: () -> Void
     let faceUp: FaceUp
     let faceDown: FaceDown
+    var faceDownColor: Color = Color.blue
+    var faceUpColor: Color = Color.teal
     
     @inlinable
     init(
         isFlipped: Bool,
         onTapAction: @escaping () -> Void,
         @ViewBuilder faceUp: () -> FaceUp,
-        @ViewBuilder faceDown: () -> FaceDown
+        @ViewBuilder faceDown: () -> FaceDown,
+        faceDownColor: Color,
+        faceUpColor: Color
     ) {
         self.isFlipped = isFlipped
         self.onTapAction = onTapAction
         self.faceUp = faceUp()
         self.faceDown = faceDown()
+        self.faceDownColor = faceDownColor
+        self.faceUpColor = faceUpColor
     }
     
     var body: some View {
@@ -26,7 +32,7 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
             if isFlipped {
                 faceDown
             } else {
-                faceUp
+                faceUp.cornerRadius(25)
             }
         }.onTapGesture {
             withAnimation {
@@ -40,50 +46,69 @@ extension CardView where FaceUp == Color {
     init(
         isFlipped: Bool,
         onTapAction: @escaping () -> Void,
-        @ViewBuilder faceDown: () -> FaceDown
+        @ViewBuilder faceDown: () -> FaceDown,
+        faceDownColor: Color,
+        faceUpColor: Color
     ) {
         self.init(
             isFlipped: isFlipped,
             onTapAction: onTapAction,
             faceUp: {
-                Color.teal
+                faceUpColor
             },
-            faceDown: faceDown
+            faceDown: faceDown,
+            faceDownColor: faceDownColor,
+            faceUpColor: faceUpColor
+            
         )
     }
     
 }
-extension CardView where FaceUp == Color, FaceDown == EmojiView {
+extension CardView where FaceUp == Color, FaceDown == FaceDownView {
     init(
         card: Card,
         isFlipped: Bool,
-        onTapAction: @escaping () -> Void
+        onTapAction: @escaping () -> Void,
+        faceDownColor: Color,
+        faceUpColor: Color
     ) {
         self.init(
             isFlipped: isFlipped,
             onTapAction: onTapAction,
             faceDown: {
-                EmojiView(card)
-            }
+                FaceDownView(card)
+            },
+            faceDownColor: faceDownColor,
+            faceUpColor: faceUpColor
         )
     }
     
 }
 
-struct EmojiView: View {
+struct FaceDownView: View {
     
     private let text: Text
     
     init<S>(_ string: S) where S: StringProtocol {
         self.text = Text(string)
+        
     }
     
+    
     var body: some View {
+        
         FillParentText {
+            
             text
         }
+        .overlay(
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(Color.teal, lineWidth: 5)
+        )
+        
     }
 }
+
 
 struct FillParentText: View {
     
@@ -93,20 +118,21 @@ struct FillParentText: View {
     init(
         @ViewBuilder text: () -> Text
     ) {
-            self.text = text()
+        self.text = text()
         
     }
     
     var body: some View {
         GeometryReader { geometry in
-            text.font(.system(size: geometry.size.width))
+            text.font(.system(size: geometry.size.width - 10))
+                .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
         
     }
     
 }
 
-extension EmojiView {
+extension FaceDownView {
     
     init(_ stringRepresentable: StringRepresentable) {
         self.init(stringRepresentable.representation)

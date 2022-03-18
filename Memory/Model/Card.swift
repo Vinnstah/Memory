@@ -42,21 +42,6 @@ struct Card: Hashable, Identifiable, StringRepresentable {
     }
 }
 
-//extension Card {
-//    
-//    enum Symbol: String, Equatable, Hashable, CaseIterable, StringRepresentable {
-//        
-//        case mouse = "🐭",
-//             dog = "🐶",
-//             cat = "🐱",
-//             fox = "🦊",
-//             panda = "🐼",
-//             rabbit = "🐰",
-//             bear = "🐻",
-//             hamster = "🐹"
-//        
-//    }
-//}
 
 protocol StringRepresentable {
     var representation: String { get }
@@ -69,7 +54,6 @@ extension StringRepresentable where Self: RawRepresentable, Self.RawValue == Str
 }
 
 
-//extension Card.Symbol {
 enum Animal: String, Equatable, CaseIterable, Hashable, StringRepresentable {
         
         var representation: String {
@@ -84,14 +68,11 @@ enum Animal: String, Equatable, CaseIterable, Hashable, StringRepresentable {
             case .rabbit: return "🐰"
             }
         }
-//        
+      
         case mouse, dog, cat, fox, panda, rabbit, bear, hamster
        
-        
     }
-//}
 
-//extension Card.Symbol {
     enum Number: String, Equatable, CaseIterable, Hashable, StringRepresentable {
         case one, two, three, four, five, six, seven, eight
         
@@ -99,7 +80,7 @@ enum Animal: String, Equatable, CaseIterable, Hashable, StringRepresentable {
             switch self {
             case .one: return "①"
             case .two: return "②"
-            case .three: return "⓷"
+            case .three: return "③"
             case .four: return "④"
             case .five: return "⑤"
             case .six: return "⑥"
@@ -108,23 +89,25 @@ enum Animal: String, Equatable, CaseIterable, Hashable, StringRepresentable {
             }
         }
     }
-//
-//        var description: Card.Symbol {
-//            switch self {
-//            case .one: return .numbers(.one)
-//            case .two: return .numbers(.two)
-//            case .three: return .numbers(.three)
-//            case .four: return .numbers(.four)
-//            case .five: return .numbers(.five)
-//            case .six: return .numbers(.six)
-//            case .seven: return .numbers(.seven)
-//            case .eight: return .numbers(.eight)
-//            }
-//        }
-//
-//        
-//    }
-//}
+
+enum Fruit: String, Equatable, CaseIterable, Hashable, StringRepresentable {
+        
+        var representation: String {
+            switch self {
+            case .apple: return "🍎"
+            case .pear: return "🍐"
+            case .cherry: return "🍒"
+            case .blueberry: return "🫐"
+            case .watermelon: return "🍉"
+            case .orange: return "🍊"
+            case .strawberry: return "🍓"
+            case .lemon: return "🍋"
+            }
+        }
+      
+        case apple, pear, cherry, blueberry, watermelon, orange, strawberry, lemon
+       
+    }
 
 
 extension Card {
