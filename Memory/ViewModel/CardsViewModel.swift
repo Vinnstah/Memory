@@ -10,11 +10,14 @@ import SwiftUI
 
 final class CardsViewModel: ObservableObject {
     
+    @Published var timeElapsed: Int
     @Published var idOfFirstFlippedCard: Card.ID? = nil
     @Published var idOfSecondFlippedCard: Card.ID? = nil
     let columns: [GridItem]
     var matchedCardIDs: Set<Card.ID> = []
     var symbols: [StringRepresentable]
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @Published var allSymbolsAreMatched: Bool
     
     lazy var cards: [Card] = symbols.duplicate().shuffled().map {
         symbol in Card(symbol: symbol,
@@ -25,11 +28,15 @@ final class CardsViewModel: ObservableObject {
         columns: [GridItem] = .init(
             repeating: .init(.flexible()),
             count: 4),
-        symbolSet: SymbolSet = .numbers
+        symbolSet: SymbolSet = .numbers,
+        timeElapsed: Int = 0,
+        allSymbolsAreMatched: Bool = false
         
     ){
         self.columns = columns
         self.symbols = symbolSet.symbols
+        self.timeElapsed = timeElapsed
+        self.allSymbolsAreMatched = allSymbolsAreMatched
     }
     
 }

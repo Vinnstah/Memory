@@ -109,6 +109,24 @@ enum Fruit: String, Equatable, CaseIterable, Hashable, StringRepresentable {
        
     }
 
+enum Food: String, Equatable, CaseIterable, Hashable, StringRepresentable {
+        
+        var representation: String {
+            switch self {
+            case .croissant: return "🥐"
+            case .hamburger: return "🍔"
+            case .fries: return "🍟"
+            case .pizza: return "🍕"
+            case .steak: return "🥩"
+            case .chicken: return "🍗"
+            case .taco: return "🌮"
+            case .hotdog: return "🌭"
+            }
+        }
+      
+        case croissant, hamburger, fries, pizza, steak, chicken, taco, hotdog
+       
+    }
 
 extension Card {
     

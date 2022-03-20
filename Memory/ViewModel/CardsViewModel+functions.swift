@@ -28,9 +28,15 @@ extension CardsViewModel {
                 self.idOfFirstFlippedCard = nil
                 self.idOfSecondFlippedCard = nil
             }
-        
+            
             if card.representation == cardByID(idOfFirstFlippedCard).representation {
                 matchedCardIDs.insert(card.id, idOfFirstFlippedCard)
+                
+                //Check if the win-condition is met. If it is set victory to true and stop the clock
+                if checkIfAllCardsAreMatched() {
+                    allSymbolsAreMatched = true
+                    self.timer.upstream.connect().cancel()
+                }
                 
             }
         })
@@ -41,7 +47,7 @@ extension CardsViewModel {
 
 extension CardsViewModel {
     
-   
+    
     //Function to check if card.id is the same as either idOfFirstFlippedCard or second.
     public func checkIfCardWithIDIsFlipped(_ cardID: Card.ID) -> Bool {
         if cardID == idOfFirstFlippedCard ||
@@ -69,6 +75,8 @@ extension CardsViewModel {
         idOfFirstFlippedCard = nil
         idOfSecondFlippedCard = nil
         matchedCardIDs = []
+        timeElapsed = .init()
+        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
         cards = symbols.duplicate().shuffled().map {
             symbol in Card(symbol: symbol,
@@ -76,3 +84,17 @@ extension CardsViewModel {
                 [unowned self] cardID in self.checkIfCardWithIDIsFlipped(cardID) }) }
     }
 }
+
+extension CardsViewModel {
+    
+    func checkIfAllCardsAreMatched() -> Bool {
+        if matchedCardIDs.count == cards.count {
+            return true
+        } else {
+            return false
+        }
+}
+    
+}
+
+

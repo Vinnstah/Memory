@@ -11,7 +11,6 @@ import SwiftUI
 struct StartupView: View {
     @ObservedObject var viewModel = CardCustomizationViewModel()
     @State private var symbolSet: SymbolSet = .numbers
-//    @State private var showingSheet = false
     
     init(){
         
@@ -74,7 +73,7 @@ struct StartupView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: GameView(viewModel: CardsViewModel.init(symbolSet: symbolSet), CardCustomViewModel: viewModel)) {
+                NavigationLink(destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet), CardCustomViewModel: viewModel)) {
                     Text("Start Game")
                     
                 }
