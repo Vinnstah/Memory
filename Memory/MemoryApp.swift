@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MemoryApp: App {
+    @StateObject private var dataController = DataController()
     var body: some Scene {
         WindowGroup {
-            StartupView()
+//            StartupView()
+            StartScreen()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

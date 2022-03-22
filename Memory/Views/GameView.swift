@@ -10,10 +10,10 @@ import SwiftUI
 
 struct GameView: View {
     
-    
-//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @ObservedObject var CardsViewModel: CardsViewModel
     @ObservedObject var CardCustomViewModel: CardCustomizationViewModel
+    @Environment(\.managedObjectContext) var moc
+    
 }
 
 extension GameView {
@@ -53,13 +53,24 @@ extension GameView {
             
         
         .navigationBarTitle(
-            Text("\(CardsViewModel.timeElapsed)")
+            Text("\(CardsViewModel.timeElapsed)                                          \(CardsViewModel.numberOfFlips)")
+
         )
         .onReceive(CardsViewModel.timer) { time in
             CardsViewModel.timeElapsed += 1
         }
         .alert(isPresented: $CardsViewModel.allSymbolsAreMatched) {
-            Alert(title: Text("YOU WON"), message: Text("Your score was: SCORE, and was achieved in \(CardsViewModel.timeElapsed)"), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text("YOU WON"), message: Text("Your total number of flips were \(CardsViewModel.numberOfFlips), and was achieved in \(CardsViewModel.timeElapsed) seconds"), primaryButton: .default(Text("Yes"), action: {
+                let highscore = Highscore(context: moc)
+                highscore.name = "\(CardsViewModel.timeElapsed)                                          \(CardsViewModel.numberOfFlips)"
+                highscore.id = UUID()
+                highscore.score = Int16(CardsViewModel.numberOfFlips)
+                highscore.time = Int16(CardsViewModel.timeElapsed)
+                
+                try? moc.save()
+                
+            }), secondaryButton: .destructive(Text("No")))
+            
         }
     }
 }

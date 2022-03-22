@@ -21,6 +21,11 @@
 		E557048A27CE792700D8DA65 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557048927CE792700D8DA65 /* CardView.swift */; };
 		E56BE43927E377A2008DB773 /* CustomizeColorRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */; };
 		E57F0C3027E3C9C800745550 /* Extension+ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F0C2F27E3C9C800745550 /* Extension+ButtonStyle.swift */; };
+		E588D4BA27E9B56700370297 /* Highscore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E588D4B827E9B56700370297 /* Highscore.xcdatamodeld */; };
+		E588D4BC27E9B5C600370297 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588D4BB27E9B5C600370297 /* StartScreen.swift */; };
+		E588D4BE27E9B5E600370297 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588D4BD27E9B5E600370297 /* Extension+Color.swift */; };
+		E588D4C027E9C11700370297 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588D4BF27E9C11700370297 /* DataController.swift */; };
+		E588D4C227E9C21600370297 /* HighscoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588D4C127E9C21600370297 /* HighscoreView.swift */; };
 		E59D14BB27D2D40100E34AAF /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D14BA27D2D40000E34AAF /* Extension+Array.swift */; };
 		E5A4DA3A27DF7C2200064F9A /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4DA3927DF7C2200064F9A /* StartupView.swift */; };
 		E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */; };
@@ -67,6 +72,11 @@
 		E557048927CE792700D8DA65 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeColorRectangle.swift; sourceTree = "<group>"; };
 		E57F0C2F27E3C9C800745550 /* Extension+ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ButtonStyle.swift"; sourceTree = "<group>"; };
+		E588D4B927E9B56700370297 /* Highscore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Highscore.xcdatamodel; sourceTree = "<group>"; };
+		E588D4BB27E9B5C600370297 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		E588D4BD27E9B5E600370297 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
+		E588D4BF27E9C11700370297 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		E588D4C127E9C21600370297 /* HighscoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreView.swift; sourceTree = "<group>"; };
 		E59D14BA27D2D40000E34AAF /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
 		E5A4DA3927DF7C2200064F9A /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
 		E5A5BD0D27CF55B800CC318C /* Extension+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIScreen.swift"; sourceTree = "<group>"; };
@@ -106,6 +116,7 @@
 		E557045227CE77F500D8DA65 = {
 			isa = PBXGroup;
 			children = (
+				E588D4B827E9B56700370297 /* Highscore.xcdatamodeld */,
 				E557045D27CE77F500D8DA65 /* Memory */,
 				E557046E27CE77F600D8DA65 /* MemoryTests */,
 				E557047827CE77F600D8DA65 /* MemoryUITests */,
@@ -126,11 +137,11 @@
 		E557045D27CE77F500D8DA65 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
+				E557045E27CE77F500D8DA65 /* MemoryApp.swift */,
 				E5A5BD1627CF696000CC318C /* Extensions */,
 				E5A5BD1327CF661300CC318C /* Model */,
 				E557048B27CE7AD700D8DA65 /* ViewModel */,
 				E557048827CE78FF00D8DA65 /* Views */,
-				E557045E27CE77F500D8DA65 /* MemoryApp.swift */,
 				E557046227CE77F600D8DA65 /* Assets.xcassets */,
 				E557046427CE77F600D8DA65 /* Preview Content */,
 			);
@@ -165,14 +176,12 @@
 		E557048827CE78FF00D8DA65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E588D4B727E9B2AC00370297 /* ViewFragments */,
 				E5A5BD1127CF5B1200CC318C /* GameView.swift */,
-				E5E5B25327E77DAD006AD624 /* TimeElapsedView.swift */,
 				E557048927CE792700D8DA65 /* CardView.swift */,
 				E5A4DA3927DF7C2200064F9A /* StartupView.swift */,
-				E51802EB27E4C49400082999 /* ScrollViewHorizontal.swift */,
-				E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */,
-				E5E5B24D27E77A6E006AD624 /* FillParenTextView.swift */,
-				E5E5B24F27E77A99006AD624 /* FaceDownView.swift */,
+				E588D4BB27E9B5C600370297 /* StartScreen.swift */,
+				E588D4C127E9C21600370297 /* HighscoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,11 +196,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		E588D4B727E9B2AC00370297 /* ViewFragments */ = {
+			isa = PBXGroup;
+			children = (
+				E56BE43827E377A1008DB773 /* CustomizeColorRectangle.swift */,
+				E5E5B24D27E77A6E006AD624 /* FillParenTextView.swift */,
+				E5E5B24F27E77A99006AD624 /* FaceDownView.swift */,
+				E51802EB27E4C49400082999 /* ScrollViewHorizontal.swift */,
+				E5E5B25327E77DAD006AD624 /* TimeElapsedView.swift */,
+			);
+			path = ViewFragments;
+			sourceTree = "<group>";
+		};
 		E5A5BD1327CF661300CC318C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E5A5BD1427CF663100CC318C /* Card.swift */,
 				E51802ED27E4D65600082999 /* SymbolSet.swift */,
+				E588D4BF27E9C11700370297 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +225,7 @@
 				E59D14BA27D2D40000E34AAF /* Extension+Array.swift */,
 				E5BE971127DCD61700B449E7 /* Extension+Set.swift */,
 				E57F0C2F27E3C9C800745550 /* Extension+ButtonStyle.swift */,
+				E588D4BD27E9B5E600370297 /* Extension+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -339,11 +362,15 @@
 			files = (
 				E5A5BD0E27CF55B800CC318C /* Extension+UIScreen.swift in Sources */,
 				E5E5B25427E77DAD006AD624 /* TimeElapsedView.swift in Sources */,
+				E588D4BC27E9B5C600370297 /* StartScreen.swift in Sources */,
 				E5A5BD1527CF663100CC318C /* Card.swift in Sources */,
 				E5BE971227DCD61700B449E7 /* Extension+Set.swift in Sources */,
+				E588D4C027E9C11700370297 /* DataController.swift in Sources */,
 				E5A4DA3A27DF7C2200064F9A /* StartupView.swift in Sources */,
 				E5E5B25027E77A99006AD624 /* FaceDownView.swift in Sources */,
+				E588D4BA27E9B56700370297 /* Highscore.xcdatamodeld in Sources */,
 				E557048A27CE792700D8DA65 /* CardView.swift in Sources */,
+				E588D4C227E9C21600370297 /* HighscoreView.swift in Sources */,
 				E53C25D727D4E57D0057BFBB /* CardsViewModel.swift in Sources */,
 				E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */,
 				E51802EC27E4C49400082999 /* ScrollViewHorizontal.swift in Sources */,
@@ -351,6 +378,7 @@
 				E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */,
 				E56BE43927E377A2008DB773 /* CustomizeColorRectangle.swift in Sources */,
 				E51802EE27E4D65600082999 /* SymbolSet.swift in Sources */,
+				E588D4BE27E9B5E600370297 /* Extension+Color.swift in Sources */,
 				E557045F27CE77F500D8DA65 /* MemoryApp.swift in Sources */,
 				E57F0C3027E3C9C800745550 /* Extension+ButtonStyle.swift in Sources */,
 				E59D14BB27D2D40100E34AAF /* Extension+Array.swift in Sources */,
@@ -681,6 +709,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E588D4B827E9B56700370297 /* Highscore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E588D4B927E9B56700370297 /* Highscore.xcdatamodel */,
+			);
+			currentVersion = E588D4B927E9B56700370297 /* Highscore.xcdatamodel */;
+			path = Highscore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E557045327CE77F500D8DA65 /* Project object */;
 }

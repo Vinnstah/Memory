@@ -16,10 +16,12 @@ extension CardsViewModel {
         
         guard let idOfFirstFlippedCard = idOfFirstFlippedCard else {
             idOfFirstFlippedCard = card.id
+            numberOfFlips += 1
             return
         }
         
         idOfSecondFlippedCard = card.id
+        numberOfFlips += 1
         
         //After 2 cards has been flipped we'll check if they match and then after 1 second delay flip them back if there's no match.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [unowned self] in
@@ -77,6 +79,7 @@ extension CardsViewModel {
         matchedCardIDs = []
         timeElapsed = .init()
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        numberOfFlips = .init()
         
         cards = symbols.duplicate().shuffled().map {
             symbol in Card(symbol: symbol,
@@ -93,8 +96,11 @@ extension CardsViewModel {
         } else {
             return false
         }
-}
+    }
     
 }
 
+extension CardsViewModel {
+    
+}
 

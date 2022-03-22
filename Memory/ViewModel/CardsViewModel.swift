@@ -18,6 +18,7 @@ final class CardsViewModel: ObservableObject {
     var symbols: [StringRepresentable]
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Published var allSymbolsAreMatched: Bool
+    @Published var numberOfFlips: Int
     
     lazy var cards: [Card] = symbols.duplicate().shuffled().map {
         symbol in Card(symbol: symbol,
@@ -30,13 +31,15 @@ final class CardsViewModel: ObservableObject {
             count: 4),
         symbolSet: SymbolSet = .numbers,
         timeElapsed: Int = 0,
-        allSymbolsAreMatched: Bool = false
+        allSymbolsAreMatched: Bool = false,
+        numberOfFlips: Int = 0
         
     ){
         self.columns = columns
         self.symbols = symbolSet.symbols
         self.timeElapsed = timeElapsed
         self.allSymbolsAreMatched = allSymbolsAreMatched
+        self.numberOfFlips = numberOfFlips
     }
     
 }
