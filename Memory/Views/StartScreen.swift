@@ -8,34 +8,50 @@
 import SwiftUI
 
 struct StartScreen: View {
-    @State private var highscoreIsShowing = false
     
+    @State private var highscoreIsShowing = false
+    @State private var navigateToChoiceScreen = false
+    
+}
+
+extension StartScreen {
     var body: some View {
         
-        
-        NavigationView {
-            ZStack {
-                Color.ForestTheme().backgroundColor.ignoresSafeArea()
-                VStack {
-                    NavigationLink(destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: SymbolSet.animals), CardCustomViewModel: CardCustomizationViewModel())) {
-                        Text("Start Game")
-                        
-                    }
+        ZStack {
+            AnimatedBackground()
+            VStack {
+                TopBarViewFragment()
+                    .ignoresSafeArea()
+                
+                Spacer()
+                
+                Button(action: {
+                    navigateToChoiceScreen.toggle()
                     
-                    .buttonStyle(.primary).foregroundColor(.ForestTheme().primaryColor)
-        
-        
-
+                }, label: {
+                    Text("Start Game")
+                })
+                    .buttonStyle(.primary)
+                    .padding()
                 
                 Button(action: {
                     highscoreIsShowing.toggle()
-                }, label: {Text("Highscore")})
-
-                }
-      
+                    
+                }, label: {
+                    Text("Highscore")
+                })
+                    .buttonStyle(.primary)
+                    .padding()
+                
+                Spacer()
             }
         }
-        .sheet(isPresented: $highscoreIsShowing, content: {HighscoreView()})
+        .background(Color.ForestTheme().backgroundColor.ignoresSafeArea())
+        
+        .sheet(isPresented: $highscoreIsShowing, content: {
+            HighscoreView()
+        })
+        .navigate(to: ChoiceScreen(), when: $navigateToChoiceScreen)
     }
+    
 }
-

@@ -62,7 +62,7 @@ extension GameView {
         .alert(isPresented: $CardsViewModel.allSymbolsAreMatched) {
             Alert(title: Text("YOU WON"), message: Text("Your total number of flips were \(CardsViewModel.numberOfFlips), and was achieved in \(CardsViewModel.timeElapsed) seconds"), primaryButton: .default(Text("Yes"), action: {
                 let highscore = Highscore(context: moc)
-                highscore.name = "\(CardsViewModel.timeElapsed)                                          \(CardsViewModel.numberOfFlips)"
+                highscore.name = "\(CardsViewModel.name)"
                 highscore.id = UUID()
                 highscore.score = Int16(CardsViewModel.numberOfFlips)
                 highscore.time = Int16(CardsViewModel.timeElapsed)
@@ -72,6 +72,7 @@ extension GameView {
             }), secondaryButton: .destructive(Text("No")))
             
         }
+        .background(Color.ForestTheme().backgroundColor)
     }
 }
 

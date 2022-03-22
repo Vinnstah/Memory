@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 public struct PrimaryButtonStyle: ButtonStyle {
-    @Environment(\.isEnabled) var isEnabled
     
     public static let defaultCornerRadius: CGFloat = 8
     private let cornerRadius: CGFloat
     private var isLoading: Bool
+    static let defaultColorTheme: Color.ForestTheme = Color.ForestTheme.init()
     
     public init(
         isLoading: Bool = false,
@@ -24,21 +24,13 @@ public struct PrimaryButtonStyle: ButtonStyle {
     }
     
     public func makeBody(configuration: Configuration) -> some View {
-        //        Group {
-        //            if isLoading {
-        //                ActivityIndicator()
-        //                    .frame(size: 30)
-        //                    .foregroundColor(.white)
-        //            } else {
         configuration.label
             .font(.title2)
-            .foregroundColor(isEnabled ? Color.white : .gray)
-        
-        //            }
-        //        }
+            .foregroundColor(PrimaryButtonStyle.defaultColorTheme.secondaryColor)
+
             .frame(maxWidth: .infinity, idealHeight: 50)
             .padding()
-            .background(isEnabled ? Color.teal : .gray)
+            .background(PrimaryButtonStyle.defaultColorTheme.secondaryBackgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 }
@@ -64,5 +56,17 @@ public extension ButtonStyle where Self == PrimaryButtonStyle {
         cornerRadius: CGFloat = PrimaryButtonStyle.defaultCornerRadius
     ) -> PrimaryButtonStyle {
         .init(isLoading: isLoading, cornerRadius: cornerRadius)
+    }
+}
+
+struct RoundButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(PrimaryButtonStyle.defaultColorTheme.complementaryColor)
+            .foregroundColor(PrimaryButtonStyle.defaultColorTheme.secondaryColor)
+            .clipShape(Circle())
+            .scaleEffect(configuration.isPressed ? 1 : 0.95)
+            .animation(.easeIn(duration: 0.2), value: configuration.isPressed)
     }
 }
