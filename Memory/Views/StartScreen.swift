@@ -9,49 +9,58 @@ import SwiftUI
 
 struct StartScreen: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var highscoreIsShowing = false
     @State private var navigateToChoiceScreen = false
+    @State private var navigateHome: Bool = false
+    @State private var navigateToPreviousScreen: Bool = false
+    @State private var navigateToSettings: Bool = false
+    @ObservedObject var viewModel = ScreenNavigationViewModel()
     
 }
 
 extension StartScreen {
     var body: some View {
-        
-        ZStack {
-            AnimatedBackground()
-            VStack {
-                TopBarViewFragment()
-                    .ignoresSafeArea()
-                
-                Spacer()
-                
-                Button(action: {
-                    navigateToChoiceScreen.toggle()
+        CustomNavigationView(destination: ChoiceScreen(screenViewModel: viewModel), isRoot: true, isLast: false) {
+            ZStack {
+                AnimatedBackground()
+                VStack {
                     
-                }, label: {
-                    Text("Start Game")
-                })
-                    .buttonStyle(.primary)
-                    .padding()
-                
-                Button(action: {
-                    highscoreIsShowing.toggle()
+                    Spacer()
                     
-                }, label: {
-                    Text("Highscore")
-                })
-                    .buttonStyle(.primary)
-                    .padding()
-                
-                Spacer()
+                    Button(action: {
+                        navigateToChoiceScreen.toggle()
+                        
+                    }, label: {
+                        Text("Start Game")
+                    })
+                        .buttonStyle(.primary)
+                        .padding()
+                    
+                    Button(action: {
+                        highscoreIsShowing.toggle()
+                        
+                    }, label: {
+                        Text("High Score")
+                    })
+                        .buttonStyle(.primary)
+                        .padding()
+                    
+                    Spacer()
+                }
             }
+            .background(Color.ForestTheme().backgroundColor.ignoresSafeArea())
+            
+            .sheet(isPresented: $highscoreIsShowing, content: {
+                HighscoreView()
+            })
         }
-        .background(Color.ForestTheme().backgroundColor.ignoresSafeArea())
+                .navigate(to: ChoiceScreen(screenViewModel: viewModel), when: $navigateToChoiceScreen)
+        //        .navigate(to: viewModel.previousScreen.previousView(), when: $navigateToSettings, previousScreen: {
+        //            viewModel.previousScreen = .startScreen })
+        //        .navigate(to: StartScreen(viewModel: viewModel), when: $navigateHome, previousScreen: {
+        //            viewModel.previousScreen = .startScreen })
         
-        .sheet(isPresented: $highscoreIsShowing, content: {
-            HighscoreView()
-        })
-        .navigate(to: ChoiceScreen(), when: $navigateToChoiceScreen)
     }
-    
+//}
 }

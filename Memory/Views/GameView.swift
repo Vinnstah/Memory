@@ -18,7 +18,7 @@ struct GameView: View {
 
 extension GameView {
     var body: some View {
-        
+        CustomNavigationView(destination: EmptyView(), isRoot: false, isLast: true) {
             GeometryReader { geometry in
                 
                 VStack {
@@ -49,18 +49,20 @@ extension GameView {
                     
                 }
                 .padding()
+                .navigationBarHidden(true)
             }
             
         
-        .navigationBarTitle(
-            Text("\(CardsViewModel.timeElapsed)                                          \(CardsViewModel.numberOfFlips)")
+//        .navigationBarTitle(
+//            Text("\(CardsViewModel.timeElapsed)                                          \(CardsViewModel.numberOfFlips)")
 
-        )
+//        )
+            
         .onReceive(CardsViewModel.timer) { time in
             CardsViewModel.timeElapsed += 1
         }
         .alert(isPresented: $CardsViewModel.allSymbolsAreMatched) {
-            Alert(title: Text("YOU WON"), message: Text("Your total number of flips were \(CardsViewModel.numberOfFlips), and was achieved in \(CardsViewModel.timeElapsed) seconds"), primaryButton: .default(Text("Yes"), action: {
+            Alert(title: Text("YOU WON"), message: Text("Your total number of flips were \(CardsViewModel.numberOfFlips), and was achieved in \(CardsViewModel.timeElapsed) seconds"), primaryButton: .default(Text("Save Highscore"), action: {
                 let highscore = Highscore(context: moc)
                 highscore.name = "\(CardsViewModel.name)"
                 highscore.id = UUID()
@@ -69,11 +71,11 @@ extension GameView {
                 
                 try? moc.save()
                 
-            }), secondaryButton: .destructive(Text("No")))
+            }), secondaryButton: .destructive(Text("Don't Save")))
             
         }
         .background(Color.ForestTheme().backgroundColor)
     }
 }
-
+}
 

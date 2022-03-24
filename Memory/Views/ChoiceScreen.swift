@@ -9,12 +9,16 @@ import Foundation
 import SwiftUI
 
 struct ChoiceScreen: View {
+    
+    //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel = CardCustomizationViewModel()
+    @ObservedObject var screenViewModel: ScreenNavigationViewModel
     @State var symbolSet: SymbolSet = .numbers
     @State private var name: String = ""
+    @State private var navigateToGameView: Bool = false
     
-    init(){
-        
+    init(screenViewModel: ScreenNavigationViewModel){
+        self.screenViewModel = screenViewModel
         UISegmentedControl.appearance().selectedSegmentTintColor = .systemTeal
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         
@@ -22,74 +26,57 @@ struct ChoiceScreen: View {
     
     var body: some View {
         
+        CustomNavigationView(destination:
+                                GameView(CardsViewModel:
+                                            CardsViewModel.init(
+                                                symbolSet: symbolSet,
+                                                name: name),
+                                         CardCustomViewModel: viewModel),
+                             isRoot: false,
+                             isLast: false) {
             VStack {
-                TopBarViewFragment()
-                    .ignoresSafeArea()
+                
                 Text("Choose your Symbol")
                     .font(.system(size: 28))
                     .foregroundColor(PrimaryButtonStyle.defaultColorTheme.secondaryColor)
-
-//                HScrollView {
-                    LazyVGrid(columns: .init(
-                        repeating: .init(.flexible()),
-                        count: 2)) {
+                
+                
+                LazyVGrid(columns: .init(
+                    repeating: .init(.flexible()),
+                    count: 2)) {
                         ForEach(SymbolSet.allCases) { symbolSet in
-                            SymbolButton(image: symbolSet.image, symbolSet: symbolSet)
+                            SymbolButton(image: symbolSet.image, symbolSet: symbolSet, selectedButton: $symbolSet)
+                            
                         }
                     }
-//                    .pickerStyle(.segmented)
-//                }
-                Spacer()
-                
-                Text("Choose your name")
-                    .foregroundColor(PrimaryButtonStyle.defaultColorTheme.secondaryColor)
-                    .font(.system(size: 24))
-                    .fontWeight(.bold)
-                TextField("Your name...", text: $name)
-                    .foregroundColor(PrimaryButtonStyle.defaultColorTheme.primaryColor)
-                    .background(PrimaryButtonStyle.defaultColorTheme.complementaryColor)
-                    .padding()
                 
                 Spacer()
                 
-                NavigationLink(destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name), CardCustomViewModel: viewModel)) {
-                    Text("Start Game")
+                TextFieldView(name: $name)
+                
+                Spacer()
+                
+                Button(action: {
+                    navigateToGameView.toggle()
                     
-                }
-                .buttonStyle(.primary)
-                .padding()
-                
+                }, label: {
+                    Text("Start Game")
+                })
+                    .buttonStyle(.primary)
+                    .padding()
+                NavigationLink(
+                    destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name), CardCustomViewModel: viewModel).navigationBarHidden(true)
+                        .navigationBarHidden(true),
+                    isActive: self.$navigateToGameView,
+                    label: {
+                        //no label
+                    })
                 
                 
             }
             .background(Color.ForestTheme().backgroundColor)
-    }
+//            .navigate(to: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name), CardCustomViewModel: viewModel), when: $navigateToGameView)
         }
-
-
-
-
-//                HStack {
-//                    VStack {
-//                        Text("Card Up Color")
-//                        Circle().fill().foregroundColor(viewModel.faceUpColor)
-//                            .overlay(ColorPicker("",
-//                                                 selection: $viewModel.faceUpColor).labelsHidden().opacity(0.015))
-//                            .frame(width: 100, height: 100, alignment: .center)
-//                    }
-//                    .padding()
-//
-//                    
-//                    VStack {
-//                        Text("Card Down Color")
-//                            .font(.subheadline)
-//                        Circle().fill().foregroundColor(viewModel.faceDownColor)
-//                            .overlay(ColorPicker("",
-//                                                 selection: $viewModel.faceDownColor).labelsHidden().opacity(0.015))
-//                            .frame(width: 100, height: 100, alignment: .center)
-//
-//                    }
-//                    .padding()
-//                    
-//                }
-//                .padding()
+                             .navigationBarHidden(true)
+    }
+}

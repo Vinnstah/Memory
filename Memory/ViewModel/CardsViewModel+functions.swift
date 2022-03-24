@@ -73,6 +73,7 @@ extension CardsViewModel {
 
 extension CardsViewModel {
     
+    //function to clear all current variables and re-init the cards array. This in order to shuffle everything and being able to restart the game.
     func clearVariablesAndRestartGame() {
         idOfFirstFlippedCard = nil
         idOfSecondFlippedCard = nil
@@ -99,8 +100,3 @@ extension CardsViewModel {
     }
     
 }
-
-extension CardsViewModel {
-    
-}
-

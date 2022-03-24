@@ -34,21 +34,5 @@ struct HighscoreView: View {
     }
         .background(Color.ForestTheme().backgroundColor).ignoresSafeArea()
     }
-    
-    
 
 }
-
-//struct BackgroundFillView<Content: View>: View {
-//    let backgroundColor: Color
-//    let content: () -> Content
-//    
-//    var body: some View {
-//        ZStack {
-//            self.backgroundColor.edgesIgnoringSafeArea(.all)
-//            self.content()
-//        }
-//    }
-//}
-
-
