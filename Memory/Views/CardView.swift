@@ -10,6 +10,7 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
     var faceDownColor: Color = Color.blue
     var faceUpColor: Color = Color.ForestTheme().primaryColor
     
+    
     @inlinable
     init(
         isFlipped: Bool,

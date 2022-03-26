@@ -12,16 +12,13 @@ struct StartScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var highscoreIsShowing = false
     @State private var navigateToChoiceScreen = false
-    @State private var navigateHome: Bool = false
-    @State private var navigateToPreviousScreen: Bool = false
-    @State private var navigateToSettings: Bool = false
-    @ObservedObject var viewModel = ScreenNavigationViewModel()
+    @ObservedObject var viewModel: CardsViewModel
     
 }
 
 extension StartScreen {
     var body: some View {
-        CustomNavigationView(destination: ChoiceScreen(screenViewModel: viewModel), isRoot: true, isLast: false) {
+        CustomNavigationView(destination: ChoiceScreen(viewModel: viewModel), isRoot: true, isLast: false) {
             ZStack {
                 AnimatedBackground()
                 VStack {
@@ -57,7 +54,7 @@ extension StartScreen {
                 HighscoreView()
             })
         }
-                .navigate(to: ChoiceScreen(screenViewModel: viewModel), when: $navigateToChoiceScreen)
+        .navigate(to: ChoiceScreen(viewModel: viewModel), when: $navigateToChoiceScreen)
         
     }
 }

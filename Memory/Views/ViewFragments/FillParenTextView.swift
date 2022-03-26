@@ -24,7 +24,9 @@ struct FillParentText: View {
             text.font(.system(size: geometry.size.width - 10))
                 .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
-        
+        .background(Color.ForestTheme().secondaryColor)
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            
     }
     
 }

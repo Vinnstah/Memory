@@ -22,10 +22,6 @@ struct FaceDownView: View {
         FillParentText {
             text
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 25)
-                .stroke(Color.teal, lineWidth: 5)
-        )
         
     }
 }

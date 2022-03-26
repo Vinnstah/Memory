@@ -8,45 +8,39 @@
 import SwiftUI
 
 struct CustomTabView: View {
+    @StateObject var viewModel = CardsViewModel(name: "")
     
     init() {
     UITabBar.appearance().backgroundColor = UIColor(Color.ForestTheme().secondaryBackgroundColor)
+    
     }
     
     var body: some View {
         
         TabView {
-            StartScreen()
+            StartScreen(viewModel: viewModel)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-                .tint(
-                    Color.ForestTheme().complementaryColor
-                )
+
             
             HighscoreView()
                 .tabItem {
                     Label("High Score", systemImage: "list.bullet.rectangle.portrait")
                 }
-                .tint(
-                    Color.ForestTheme().complementaryColor
-                )
+
             
-            ChoiceScreen(screenViewModel: ScreenNavigationViewModel())
+            ChoiceScreen(viewModel: viewModel)
                 .tabItem {
                     Label("Choice Screen", systemImage: "square.grid.3x3")
                 }
-                .tint(
-                    Color.ForestTheme().complementaryColor
-                )
+
             
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
-                .tint(
-                    Color.ForestTheme().complementaryColor
-                )
+
             
         }
         .accentColor(

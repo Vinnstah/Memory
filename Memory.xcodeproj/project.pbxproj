@@ -36,9 +36,7 @@
 		E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD1127CF5B1200CC318C /* GameView.swift */; };
 		E5A5BD1527CF663100CC318C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5BD1427CF663100CC318C /* Card.swift */; };
 		E5BD88A027EC82C8003432CE /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD889F27EC82C8003432CE /* TextFieldView.swift */; };
-		E5BD88A227ECAD87003432CE /* ScreenSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD88A127ECAD87003432CE /* ScreenSelection.swift */; };
 		E5BD88A427ECADEE003432CE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD88A327ECADEE003432CE /* SettingsView.swift */; };
-		E5BD88A627ECB0F6003432CE /* ScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD88A527ECB0F6003432CE /* ScreenViewModel.swift */; };
 		E5BE971227DCD61700B449E7 /* Extension+Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE971127DCD61700B449E7 /* Extension+Set.swift */; };
 		E5E5B24E27E77A6E006AD624 /* FillParenTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5B24D27E77A6E006AD624 /* FillParenTextView.swift */; };
 		E5E5B25027E77A99006AD624 /* FaceDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5B24F27E77A99006AD624 /* FaceDownView.swift */; };
@@ -95,9 +93,7 @@
 		E5A5BD1127CF5B1200CC318C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E5A5BD1427CF663100CC318C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E5BD889F27EC82C8003432CE /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
-		E5BD88A127ECAD87003432CE /* ScreenSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSelection.swift; sourceTree = "<group>"; };
 		E5BD88A327ECADEE003432CE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		E5BD88A527ECB0F6003432CE /* ScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewModel.swift; sourceTree = "<group>"; };
 		E5BE971127DCD61700B449E7 /* Extension+Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Set.swift"; sourceTree = "<group>"; };
 		E5E5B24D27E77A6E006AD624 /* FillParenTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillParenTextView.swift; sourceTree = "<group>"; };
 		E5E5B24F27E77A99006AD624 /* FaceDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDownView.swift; sourceTree = "<group>"; };
@@ -209,7 +205,6 @@
 				E53C25D627D4E57D0057BFBB /* CardsViewModel.swift */,
 				E5158F8527D2448A002C024A /* CardsViewModel+functions.swift */,
 				E51802E927E48DAB00082999 /* CardCustomizationViewModel.swift */,
-				E5BD88A527ECB0F6003432CE /* ScreenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -236,7 +231,6 @@
 				E5A5BD1427CF663100CC318C /* Card.swift */,
 				E51802ED27E4D65600082999 /* SymbolSet.swift */,
 				E588D4BF27E9C11700370297 /* DataController.swift */,
-				E5BD88A127ECAD87003432CE /* ScreenSelection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,7 +384,6 @@
 				E5A5BD1527CF663100CC318C /* Card.swift in Sources */,
 				E5BE971227DCD61700B449E7 /* Extension+Set.swift in Sources */,
 				E588D4C027E9C11700370297 /* DataController.swift in Sources */,
-				E5BD88A627ECB0F6003432CE /* ScreenViewModel.swift in Sources */,
 				E5A4DA3A27DF7C2200064F9A /* ChoiceScreen.swift in Sources */,
 				E588D4C627E9FE6A00370297 /* Extension+View.swift in Sources */,
 				E5E5B25027E77A99006AD624 /* FaceDownView.swift in Sources */,
@@ -404,7 +397,6 @@
 				E5BD88A427ECADEE003432CE /* SettingsView.swift in Sources */,
 				E5158F8627D2448A002C024A /* CardsViewModel+functions.swift in Sources */,
 				E51802EA27E48DAB00082999 /* CardCustomizationViewModel.swift in Sources */,
-				E5BD88A227ECAD87003432CE /* ScreenSelection.swift in Sources */,
 				E588D4C827EA02F300370297 /* AnimatedBackground.swift in Sources */,
 				E5A5BD1227CF5B1200CC318C /* GameView.swift in Sources */,
 				E56BE43927E377A2008DB773 /* CustomizeColorRectangle.swift in Sources */,

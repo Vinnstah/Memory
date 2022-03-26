@@ -30,9 +30,16 @@ struct HighscoreView: View {
                         Spacer()
                         Text(highscore.name!)
                     }
-                Text("Name:" + highscore.name!)
-                Text("Number of flips: \(highscore.score)")
-                Text("Time: \(highscore.time)")
+                    HStack {
+                        Text("Number of flips: ")
+                        Spacer()
+                        Text("\(highscore.score)")
+                    }
+                    HStack {
+                        Text("Time: ")
+                        Spacer()
+                        Text("\(highscore.time)")
+                    }
                 }
                 .padding()
             }

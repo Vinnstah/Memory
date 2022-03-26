@@ -10,19 +10,18 @@ import SwiftUI
 
 struct ChoiceScreen: View {
     
-    @ObservedObject var viewModel = CardCustomizationViewModel()
-    @ObservedObject var screenViewModel: ScreenNavigationViewModel
+    @ObservedObject var viewModel: CardsViewModel
     @State var symbolSet: SymbolSet = .numbers
     @State private var name: String = ""
     @State private var navigateToGameView: Bool = false
+    @State private var showAlert: Bool = false
     
     
     var body: some View {
         
         CustomNavigationView(destination:
                                 GameView(
-                                    CardsViewModel:CardsViewModel.init(symbolSet: symbolSet, name: name),
-                                    CardCustomViewModel: viewModel
+                                    CardsViewModel:CardsViewModel.init(symbolSet: symbolSet, name: name)
                                 ),
                              isRoot: false,
                              isLast: false) {
@@ -49,11 +48,20 @@ struct ChoiceScreen: View {
                 Spacer()
                 
                 TextFieldView(name: $name)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Error"), message: Text("Please select a name with at least 2 characters"), dismissButton: .default(Text("Ok")))
+                    }
                 
                 Spacer()
                 
                 Button(action: {
+                    
+                    if viewModel.checkIfNameFulfilRequirements(name: name) {
                     navigateToGameView.toggle()
+                    } else {
+                        showAlert.toggle()
+                        
+                    }
                     
                 }, label: {
                     Text("Start Game")
@@ -61,8 +69,9 @@ struct ChoiceScreen: View {
                     .buttonStyle(.primary)
                     .padding(.bottom, 25)
                 
+                
                 NavigationLink(
-                    destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name), CardCustomViewModel: viewModel).navigationBarHidden(true)
+                    destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name))
                         .navigationBarHidden(true),
                     isActive: self.$navigateToGameView,
                     label: {
@@ -74,5 +83,6 @@ struct ChoiceScreen: View {
             .background(Color.ForestTheme().backgroundColor)
         }
         .navigationBarHidden(true)
+
     }
 }

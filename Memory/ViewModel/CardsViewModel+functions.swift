@@ -100,3 +100,13 @@ extension CardsViewModel {
     }
     
 }
+
+extension CardsViewModel {
+    func checkIfNameFulfilRequirements(name: String) -> Bool {
+        if name.count < 2 {
+            return false
+        }
+        
+        return true
+    }
+}

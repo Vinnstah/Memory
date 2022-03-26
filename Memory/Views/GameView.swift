@@ -11,7 +11,6 @@ import SwiftUI
 struct GameView: View {
     
     @ObservedObject var CardsViewModel: CardsViewModel
-    @ObservedObject var CardCustomViewModel: CardCustomizationViewModel
     @Environment(\.managedObjectContext) var moc
     
 }
@@ -39,6 +38,7 @@ extension GameView {
                                 isFlipped: card.checkIfIsFlipped(),
                                 onTapAction: {
                                     CardsViewModel.didTapCard(card: card)
+                                    
                                 },
                                 faceDownColor: Color.ForestTheme().primaryColor,
                                 faceUpColor: Color.ForestTheme().complementaryColor
@@ -48,6 +48,7 @@ extension GameView {
                         }
                         
                     }
+                   
                     
                     Spacer()
                     
@@ -65,6 +66,7 @@ extension GameView {
             .onReceive(CardsViewModel.timer) { time in
                 CardsViewModel.timeElapsed += 1
             }
+            
             .alert(isPresented: $CardsViewModel.allSymbolsAreMatched) {
                 Alert(title: Text("YOU WON"), message: Text("Your total number of flips were \(CardsViewModel.numberOfFlips), and was achieved in \(CardsViewModel.timeElapsed) seconds"), primaryButton: .default(Text("Save Highscore"), action: {
                     let highscore = Highscore(context: moc)
@@ -79,6 +81,7 @@ extension GameView {
                 
             }
             .background(Color.ForestTheme().backgroundColor)
+            
         }
     }
 }
