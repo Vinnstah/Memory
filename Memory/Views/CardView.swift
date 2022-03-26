@@ -8,7 +8,7 @@ struct CardView<FaceUp, FaceDown>: View where FaceUp: View, FaceDown: View {
     let faceUp: FaceUp
     let faceDown: FaceDown
     var faceDownColor: Color = Color.blue
-    var faceUpColor: Color = Color.teal
+    var faceUpColor: Color = Color.ForestTheme().primaryColor
     
     @inlinable
     init(

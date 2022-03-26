@@ -14,8 +14,9 @@ struct TimeElapsedView: View {
     var body: some View {
         HStack {
             Spacer()
-    Text("\(timer)")
-            .foregroundColor(.black)
+    Text("Time: \(timer)")
+                .font(.system(size: 12))
+            .foregroundColor(Color.ForestTheme().complementaryColor)
     }
     }
 }

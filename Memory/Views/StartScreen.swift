@@ -29,6 +29,7 @@ extension StartScreen {
                     Spacer()
                     
                     Button(action: {
+                        
                         navigateToChoiceScreen.toggle()
                         
                     }, label: {
@@ -47,6 +48,7 @@ extension StartScreen {
                         .padding()
                     
                     Spacer()
+                    
                 }
             }
             .background(Color.ForestTheme().backgroundColor.ignoresSafeArea())
@@ -56,11 +58,6 @@ extension StartScreen {
             })
         }
                 .navigate(to: ChoiceScreen(screenViewModel: viewModel), when: $navigateToChoiceScreen)
-        //        .navigate(to: viewModel.previousScreen.previousView(), when: $navigateToSettings, previousScreen: {
-        //            viewModel.previousScreen = .startScreen })
-        //        .navigate(to: StartScreen(viewModel: viewModel), when: $navigateHome, previousScreen: {
-        //            viewModel.previousScreen = .startScreen })
         
     }
-//}
 }

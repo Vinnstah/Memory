@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct HighscoreView: View {
-    @FetchRequest(sortDescriptors: []) var highscores: FetchedResults<Highscore>
+    @FetchRequest(entity: Highscore.entity(),sortDescriptors: [
+        NSSortDescriptor(keyPath: \Highscore.time, ascending: true)
+    ]) var highscores: FetchedResults<Highscore>
     
     var body: some View {
         
@@ -23,8 +25,13 @@ struct HighscoreView: View {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color.ForestTheme().complementaryColor)
                 VStack {
+                    HStack {
+                        Text("Name: ")
+                        Spacer()
+                        Text(highscore.name!)
+                    }
                 Text("Name:" + highscore.name!)
-                Text("Score: \(highscore.score)")
+                Text("Number of flips: \(highscore.score)")
                 Text("Time: \(highscore.time)")
                 }
                 .padding()
@@ -32,7 +39,9 @@ struct HighscoreView: View {
             }
         }
     }
-        .background(Color.ForestTheme().backgroundColor).ignoresSafeArea()
+        .padding()
+        .background(Color.ForestTheme().backgroundColor)
+
     }
 
 }

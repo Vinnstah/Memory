@@ -9,5 +9,4 @@ import Foundation
 
 final class ScreenNavigationViewModel: ObservableObject {
     @Published var previousScreen: Screen = .startScreen
-    
 }

@@ -18,6 +18,7 @@ struct TextFieldView: View  {
             .font(.system(size: 24))
             .fontWeight(.bold)
         TextField("Your name...", text: $name)
+                .textFieldStyle(.roundedBorder)
             .foregroundColor(PrimaryButtonStyle.defaultColorTheme.secondaryColor)
             .background(PrimaryButtonStyle.defaultColorTheme.backgroundColor)
             .font(.system(size: 28))

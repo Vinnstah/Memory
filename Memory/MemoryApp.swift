@@ -13,7 +13,8 @@ struct MemoryApp: App {
     var body: some Scene {
         WindowGroup {
 //            StartupView()
-            StartScreen()
+//            StartScreen()
+            CustomTabView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

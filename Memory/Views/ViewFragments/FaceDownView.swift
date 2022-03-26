@@ -20,7 +20,6 @@ struct FaceDownView: View {
     var body: some View {
         
         FillParentText {
-            
             text
         }
         .overlay(

@@ -10,28 +10,20 @@ import SwiftUI
 
 struct ChoiceScreen: View {
     
-    //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel = CardCustomizationViewModel()
     @ObservedObject var screenViewModel: ScreenNavigationViewModel
     @State var symbolSet: SymbolSet = .numbers
     @State private var name: String = ""
     @State private var navigateToGameView: Bool = false
     
-    init(screenViewModel: ScreenNavigationViewModel){
-        self.screenViewModel = screenViewModel
-        UISegmentedControl.appearance().selectedSegmentTintColor = .systemTeal
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        
-    }
     
     var body: some View {
         
         CustomNavigationView(destination:
-                                GameView(CardsViewModel:
-                                            CardsViewModel.init(
-                                                symbolSet: symbolSet,
-                                                name: name),
-                                         CardCustomViewModel: viewModel),
+                                GameView(
+                                    CardsViewModel:CardsViewModel.init(symbolSet: symbolSet, name: name),
+                                    CardCustomViewModel: viewModel
+                                ),
                              isRoot: false,
                              isLast: false) {
             VStack {
@@ -45,7 +37,11 @@ struct ChoiceScreen: View {
                     repeating: .init(.flexible()),
                     count: 2)) {
                         ForEach(SymbolSet.allCases) { symbolSet in
-                            SymbolButton(image: symbolSet.image, symbolSet: symbolSet, selectedButton: $symbolSet)
+                            SymbolButton(
+                                image: symbolSet.image,
+                                symbolSet: symbolSet,
+                                selectedButton: $symbolSet
+                            )
                             
                         }
                     }
@@ -63,7 +59,8 @@ struct ChoiceScreen: View {
                     Text("Start Game")
                 })
                     .buttonStyle(.primary)
-                    .padding()
+                    .padding(.bottom, 25)
+                
                 NavigationLink(
                     destination: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name), CardCustomViewModel: viewModel).navigationBarHidden(true)
                         .navigationBarHidden(true),
@@ -75,8 +72,7 @@ struct ChoiceScreen: View {
                 
             }
             .background(Color.ForestTheme().backgroundColor)
-//            .navigate(to: GameView(CardsViewModel: CardsViewModel.init(symbolSet: symbolSet, name: name), CardCustomViewModel: viewModel), when: $navigateToGameView)
         }
-                             .navigationBarHidden(true)
+        .navigationBarHidden(true)
     }
 }
